@@ -42,7 +42,7 @@ export default function PresenceSection() {
                 </div>
 
                 {/* KOLKATA - East (West Bengal) */}
-                <div style={markerStyle("74%", "52%")}>
+                <div style={markerStyle("54%", "52%")}>
                     <span style={labelStyle}>Kolkata</span>
                 </div>
 

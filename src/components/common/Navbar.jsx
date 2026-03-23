@@ -26,15 +26,15 @@ const Navbar = () => {
         { name: 'About', path: '/about' },
         { name: 'Products', path: '/products' },
         { name: 'Contact', path: '/contact' },
-        { name: 'Gallery', path: '/gallery' },
+        { name: 'Media Gallery', path: '/media-gallery' },
         { name: 'Blog', path: '/blog' },
         { name: 'Reviews', path: '/reviews' },
     ];
 
     const moreLinks = [
         { name: 'Management', path: '/management' },
-        { name: 'Media Gallery', path: '/media-gallery' },
-        { name: 'Circular', path: '/circular' },
+       { name: 'Circular', path: '/circular' },
+       { name: 'Book Appointment', path: '/appointment' },
         { name: 'Tenders', path: '/tender-contract' },
         { name: 'Careers', path: '/career' },
         { name: 'India Map', path: '/india-map' },

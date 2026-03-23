@@ -83,7 +83,7 @@ const Hero = () => {
                   className="flex flex-col md:flex-row gap-4 justify-center items-center"
                 >
                   <button 
-                    onClick={() => navigate('/register')}
+                    onClick={() => navigate('/products')}
                     className="px-10 py-4 bg-[#C0A080] text-white hover:bg-[#a88a6a] transition-all duration-300 rounded-sm font-bold text-xs uppercase tracking-widest shadow-xl shadow-[#C0A080]/20"
                   >
                     Explore Collection
