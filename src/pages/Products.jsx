@@ -3,14 +3,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 import useSEO from '../hooks/useSEO';
 
 const allProducts = [
-    { id: 1, name: "Egyptian Cotton", cat: "Fabrics", img: "https://plus.unsplash.com/premium_photo-1674747087104-516a4d6d316c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmFicmljfGVufDB8fDB8fHww" },
-    { id: 2, name: "Hotel Bedspread", cat: "Bedsheets", img: "https://images.unsplash.com/photo-1601056639638-c53c50e13ead?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZmFicmljfGVufDB8fDB8fHww" },
-    { id: 3, name: "Fine Table Linen", cat: "Linen", img: "https://images.unsplash.com/photo-1518893063132-36e46dbe2428?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGZhYnJpY3xlbnwwfHwwfHx8MA%3D%3D" },
-    { id: 4, name: "Raw Silk Fabric", cat: "Fabrics", img: "https://images.unsplash.com/photo-1773218373348-34db6bb11662?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhYnJpYyUyMHRleHRpbGV8ZW58MHx8MHx8fDA%3D" },
-    { id: 5, name: "Satin Silk", cat: "Bedsheets", img: "https://images.unsplash.com/photo-1701964620952-c31ddd8d4bc4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZmFicmljJTIwdGV4dGlsZXxlbnwwfHwwfHx8MA%3D%3D" },
-    { id: 6, name: "Damask Set", cat: "Linen", img: "https://plus.unsplash.com/premium_photo-1673429738990-2b85964723ad?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGZhYnJpYyUyMHRleHRpbGV8ZW58MHx8MHx8fDA%3D" },
-    { id: 7, name: "Organic Fiber", cat: "Fabrics", img: "https://images.unsplash.com/photo-1681003564665-62848f8d481e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGZhYnJpYyUyMHRleHRpbGV8ZW58MHx8MHx8fDA%3D" },
-    { id: 8, name: "Velvet Touch", cat: "Fabrics", img: "https://images.unsplash.com/photo-1701964619775-b18422290cf9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFicmljJTIwdGV4dGlsZXxlbnwwfHwwfHx8MA%3D%3D" },
+    { id: 1, name: "Classic White Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0001.jpg" },
+    { id: 2, name: "Premium Cotton Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0002.jpg" },
+    { id: 3, name: "Luxury Soft Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0003.jpg" },
+    { id: 4, name: "Elegant Stripe Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0004.jpg" },
+    { id: 5, name: "Hotel Style Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0005.jpg" },
+    { id: 6, name: "Premium Satin Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0006.jpg" },
+    { id: 7, name: "Soft Touch Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0007.jpg" },
+    { id: 8, name: "Designer Pattern Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0008.jpg" },
+    { id: 9, name: "Royal Finish Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0009.jpg" },
+    { id: 10, name: "Comfort Fit Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0010.jpg" },
+    { id: 11, name: "Breathable Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0011.jpg" },
+    { id: 12, name: "Modern Print Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0012.jpg" },
+    { id: 13, name: "Classic Stripe Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0013.jpg" },
+    { id: 14, name: "Ultra Soft Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0014.jpg" },
+    { id: 15, name: "Minimal Design Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0015.jpg" },
+    { id: 16, name: "Premium Comfort Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0016.jpg" },
+    { id: 17, name: "Luxury Hotel Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0017.jpg" },
+    { id: 18, name: "Elegant White Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0018.jpg" },
+    { id: 19, name: "Classic Comfort Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0019.jpg" },
+    { id: 20, name: "Soft Premium Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0020.jpg" },
+    { id: 21, name: "Modern Luxury Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0021.jpg" },
+    { id: 22, name: "Designer Comfort Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0022.jpg" },
+    { id: 23, name: "Ultra Premium Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0023.jpg" },
+    { id: 24, name: "Signature Collection Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0024.jpg" },
 ];
 
 const Products = () => {
