@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import useSEO from '../hooks/useSEO';
 
 const allProducts = [
-    { id: 1, name: "Classic White Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0001.jpg" },
     { id: 2, name: "Premium Cotton Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0002.jpg" },
     { id: 3, name: "Luxury Soft Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0003.jpg" },
     { id: 4, name: "Elegant Stripe Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0004.jpg" },
