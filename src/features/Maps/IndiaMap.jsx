@@ -1,41 +1,56 @@
-import React from "react";
-import Map from "../../components/common/Map"; // 👈 your map component
+import React, { useState, useEffect } from "react";
 
 export default function PresenceSection() {
+
+    // ✅ Mobile detection
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
-        <div style={containerStyle} >
-            
-            {/* LEFT MAP */}
+        <div style={getContainerStyle(isMobile)}>
+
+            {/* LEFT VIDEO */}
             <div style={mapWrapper}>
                 <div style={mapContainer}>
-                    <Map />
+                    <video
+                        src="/india-map.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={videoStyle}
+                    />
                 </div>
             </div>
 
             {/* RIGHT CONTENT */}
-            {/* RIGHT CONTENT */}
-<div className="mt-20">
-    <h2 style={headingStyle}>Our Presence</h2>
+            <div style={{ marginTop: isMobile ? "30px" : "80px" }}>
+                <h2 style={headingStyle}>Our Presence</h2>
 
-    <div style={locationsGrid}>
-        {locations.map((loc) => (
-            <div key={loc.id} style={cardStyle}>
-                <h3 style={cityStyle}>{loc.city}</h3>
-                <p style={stateStyle}>{loc.name}</p>
+                <div style={getLocationsGrid(isMobile)}>
+                    {locations.map((loc) => (
+                        <div key={loc.id} style={cardStyle}>
+                            <h3 style={cityStyle}>{loc.city}</h3>
+                            <p style={stateStyle}>{loc.name}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
-        ))}
-    </div>
-</div>
+
         </div>
     );
 }
 
-/* ---------------- DATA (Your Original One) ---------------- */
-const locationsGrid = {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr", // 👈 2 columns
-    gap: "16px",
-};
+/* ---------------- DATA ---------------- */
+
 const locations = [
   { id: 1, name: "Parekh Fabrics", city: "Ahmedabad" },
   { id: 2, name: "Parekh Silk", city: "Surat" },
@@ -46,17 +61,27 @@ const locations = [
   { id: 7, name: "Parekh Southern Polyfabrics", city: "Chennai" },
 ];
 
-/* ---------------- STYLES ---------------- */
+/* ---------------- DYNAMIC STYLES ---------------- */
 
-const containerStyle = {
+const getContainerStyle = (isMobile) => ({
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
+    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
     gap: "40px",
     alignItems: "center",
-    padding: "60px",
+
+    padding: isMobile ? "90px 20px 40px" : "100px 60px 60px", // 🔥 top spacing fix
+
     background: "#f3f4f6",
     fontFamily: "sans-serif",
-};
+});
+
+const getLocationsGrid = (isMobile) => ({
+    display: "grid",
+    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+    gap: "16px",
+});
+
+/* ---------------- STATIC STYLES ---------------- */
 
 const mapWrapper = {
     width: "100%",
@@ -66,7 +91,16 @@ const mapWrapper = {
 
 const mapContainer = {
     width: "100%",
-    height: "600px", // 🔥 important
+    height: "100%",
+    minHeight: "400px",
+    maxHeight: "700px",
+};
+const videoStyle = {
+    width: "100%",
+    height: "auto",   // 🔥 IMPORTANT (fixes cut)
+    maxHeight: "650px",
+    objectFit: "contain",
+    borderRadius: "12px",
 };
 
 const headingStyle = {
@@ -80,7 +114,6 @@ const cardStyle = {
     border: "1px solid #e2e8f0",
     borderRadius: "12px",
     padding: "20px",
-    marginBottom: "16px",
     background: "white",
     boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
 };
