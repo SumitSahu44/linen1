@@ -18,27 +18,27 @@ const Navbar = () => {
     // Close mobile menu on route change
     useEffect(() => { setIsOpen(false); }, [location]);
 
-    const navLinks = [
-        { name: 'Home', path: '/' },
-        { name: 'About', path: '/about' },
-        { name: 'Contact', path: '/contact' },
-        { name: 'Products', path: '/products' },
-        { name: 'Media Gallery', path: '/media-gallery' },
-        { name: 'Blog', path: '/blog' },
-        { name: 'Reviews', path: '/reviews' },
-    ];
-
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Contact Us', path: '/contact' },
+    { name: 'Products', path: '/products' }, // Fabrics, Bedsheets & Linen अंदर
+    { name: 'Product Gallery', path: '/media-gallery' },
+    { name: 'Management', path: '/management' },
+     
+];
     const moreLinks = [
-        { name: 'Management', path: '/management' },
-        { name: 'Circular', path: '/circular' },
-        { name: 'Visit Appointment', path: '/appointment' },
-        { name: 'Tender & Contract', path: '/tender-contract' },
-        { name: 'Careers', path: '/career' },
-        { name: 'Textile Associates ', path: '/india-map' },
-        { name: 'e-Quotation', path: '/quotation' },
-        { name: 'e-Auction', path: '/auction' },
-    ];
-
+    { name: 'e-Quotation', path: '/quotation' },
+    { name: 'e-Auction', path: '/auction' },
+    { name: 'Tender & Contract', path: '/tender-contract' },
+    { name: 'Careers', path: '/career' },
+    { name: 'Circular', path: '/circular' },
+    { name: 'Blog', path: '/blog' },
+    { name: 'Reviews', path: '/reviews' },
+    { name: 'Visit Appointment', path: '/appointment' }, // e-Form
+    { name: 'Textile Associates', path: '/india-map' },
+   
+];
     // Color tokens based on scroll state
     const textMain = isScrolled ? 'text-[#1A252F]' : 'text-white';
     const textMuted = isScrolled ? 'text-gray-600' : 'text-white/90';
