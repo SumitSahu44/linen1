@@ -42,34 +42,50 @@ const Circular = () => {
                     <p className="text-gray-500">Stay updated with the latest news and announcements from Parekh Linen</p>
                 </div>
 
-                <div className="space-y-6">
-                    {circulars.map((circular, idx) => (
-                        <div 
-                            key={idx}
-                            className="bg-white p-8 border border-gray-200 hover:border-[#C0A080] hover:shadow-lg transition-all group cursor-pointer"
-                        >
-                            <div className="flex justify-between items-start mb-4">
-                                <div>
-                                    <p className="text-[#C0A080] text-xs font-bold uppercase tracking-widest mb-2">{circular.date}</p>
-                                    <h3 className="text-2xl font-serif text-[#2C3E50] group-hover:text-[#C0A080] transition-colors">
-                                        {circular.title}
-                                    </h3>
-                                </div>
-                                <span className={`px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-full ${
-                                    circular.priority === 'High' ? 'bg-red-100 text-red-700' :
-                                    circular.priority === 'Medium' ? 'bg-yellow-100 text-yellow-700' :
-                                    'bg-green-100 text-green-700'
-                                }`}>
-                                    {circular.priority}
-                                </span>
-                            </div>
-                            <p className="text-gray-600 leading-relaxed mb-4">{circular.description}</p>
-                            <button className="text-[#C0A080] text-sm font-semibold uppercase tracking-widest hover:text-[#2C3E50] transition-colors">
-                                Read More →
-                            </button>
-                        </div>
-                    ))}
-                </div>
+            <div className="space-y-6">
+    {/* No Circulars Published Message */}
+    <div className="bg-white p-16 border-2 border-dashed border-gray-100 flex flex-col items-center justify-center text-center group transition-all">
+        
+        {/* Decorative Icon Area */}
+        <div className="mb-6 relative">
+            <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center border border-gray-100 group-hover:border-[#C0A080] transition-colors">
+                <svg 
+                    className="w-8 h-8 text-gray-300 group-hover:text-[#C0A080] transition-colors" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                >
+                    <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="1.5" 
+                        d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z" 
+                    />
+                    <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="1.5" 
+                        d="M14 3v5h5M16 13H8M16 17H8M10 9H8" 
+                    />
+                </svg>
+            </div>
+        </div>
+
+        {/* Text Content */}
+        <h3 className="text-2xl font-serif text-[#2C3E50] mb-3 italic">
+            At present, No circular published
+        </h3>
+        
+        <div className="w-12 h-0.5 bg-[#C0A080] mb-6 opacity-50"></div>
+        
+        <p className="text-gray-400 text-[11px] uppercase tracking-[0.2em] font-medium max-w-xs leading-relaxed">
+            All official notices and trade circulars will be listed here once released.
+        </p>
+
+        {/* Date Stamp Placeholder */}
+
+    </div>
+</div>
             </div>
         </div>
     );

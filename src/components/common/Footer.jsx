@@ -75,7 +75,7 @@ const Footer = () => {
   <p className="text-gray-400 text-sm mb-3 flex items-center gap-2">
     <FaPhone className="text-[#C0A080]" />
     <a href="tel:+913300000000" className="hover:text-white transition-colors">
-      +91 33 0000 0000
+      6353778329
     </a>
   </p>
 

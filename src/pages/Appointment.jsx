@@ -61,118 +61,117 @@ const Appointment = () => {
                     </div>
 
                     {/* Right Side: Appointment e-Form */}
-                    <div className="md:col-span-2 bg-slate-50 p-8 md:p-12 border border-gray-100 shadow-sm">
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            
-                            {/* Personal Details */}
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Full Name</label>
-                                    <input 
-                                        type="text" 
-                                        required
-                                        className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
-                                        placeholder="John Doe"
-                                        onChange={(e) => setFormData({...formData, name: e.target.value})}
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Company Name</label>
-                                    <input 
-                                        type="text" 
-                                        className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
-                                        placeholder="Enter Organization"
-                                        onChange={(e) => setFormData({...formData, company: e.target.value})}
-                                    />
-                                </div>
-                            </div>
+                <div className="md:col-span-2 bg-slate-50 p-8 md:p-12 border border-gray-100 shadow-sm">
+    <form onSubmit={handleSubmit} className="space-y-6">
+        
+        {/* Name & Business Section */}
+        <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Name of the Visitor</label>
+                <input 
+                    type="text" 
+                    required
+                    className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
+                    placeholder="Enter your full name"
+                    onChange={(e) => setFormData({...formData, visitorName: e.target.value})}
+                />
+            </div>
+            <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Name of the Business</label>
+                <input 
+                    type="text" 
+                    required
+                    className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
+                    placeholder="Enter Business/Organization"
+                    onChange={(e) => setFormData({...formData, businessName: e.target.value})}
+                />
+            </div>
+        </div>
 
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Email Address</label>
-                                    <input 
-                                        type="email" 
-                                        required
-                                        className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
-                                        placeholder="email@example.com"
-                                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Phone Number</label>
-                                    <input 
-                                        type="tel" 
-                                        required
-                                        className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
-                                        placeholder="+91 00000 00000"
-                                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                                    />
-                                </div>
-                            </div>
+        {/* Address & Pin Code */}
+        <div className="space-y-2">
+            <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Visitor Address with Pin code</label>
+            <textarea 
+                rows="2"
+                required
+                className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all resize-none"
+                placeholder="Complete address including PIN"
+                onChange={(e) => setFormData({...formData, address: e.target.value})}
+            />
+        </div>
 
-                            {/* Scheduling */}
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Preferred Date</label>
-                                    <div className="flex items-center border-b border-gray-300">
-                                        <FaCalendarAlt className="text-gray-400 mr-2" />
-                                        <input 
-                                            type="date" 
-                                            required
-                                            className="w-full p-3 bg-transparent outline-none focus:text-[#C0A080]"
-                                            onChange={(e) => setFormData({...formData, date: e.target.value})}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Time Slot</label>
-                                    <div className="flex items-center border-b border-gray-300">
-                                        <FaClock className="text-gray-400 mr-2" />
-                                        <select 
-                                            className="w-full p-3 bg-transparent outline-none appearance-none"
-                                            onChange={(e) => setFormData({...formData, timeSlot: e.target.value})}
-                                        >
-                                            <option value="">Choose a slot</option>
-                                            <option value="10:00 AM">10:00 AM - 12:00 PM</option>
-                                            <option value="02:00 PM">02:00 PM - 04:00 PM</option>
-                                            <option value="04:00 PM">04:00 PM - 05:00 PM</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+        {/* Contact Details */}
+        <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Mobile No.</label>
+                <input 
+                    type="tel" 
+                    required
+                    className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
+                    placeholder="+91 00000 00000"
+                    onChange={(e) => setFormData({...formData, mobile: e.target.value})}
+                />
+            </div>
+            <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Email Id</label>
+                <input 
+                    type="email" 
+                    required
+                    className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
+                    placeholder="email@example.com"
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                />
+            </div>
+        </div>
 
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Purpose of Visit</label>
-                                <select 
-                                    className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
-                                    onChange={(e) => setFormData({...formData, purpose: e.target.value})}
-                                >
-                                    <option value="Factory Tour">Factory Tour & Production Overview</option>
-                                    <option value="Sampling">Product Sampling & Selection</option>
-                                    <option value="Trade Meeting">Trade & Partnership Discussion</option>
-                                    <option value="Order Discussion">Bulk Order Finalization</option>
-                                </select>
-                            </div>
+        {/* Identity Verification Section */}
+        <div className="grid md:grid-cols-2 gap-6 p-4 bg-white border border-gray-100 rounded-sm">
+            <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Identity Document (Roll-down)</label>
+                <select 
+                    required
+                    className="w-full p-3 bg-gray-50 border-none text-sm outline-none focus:ring-1 ring-[#C0A080]"
+                    onChange={(e) => setFormData({...formData, idType: e.target.value})}
+                >
+                    <option value="">Select Document Type</option>
+                    <option value="Aadhaar Card">Aadhaar Card</option>
+                    <option value="ECI Card">ECI Card (Voter ID)</option>
+                    <option value="DL">Driving License (DL)</option>
+                </select>
+            </div>
+            <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Upload Proof (Image/PDF)</label>
+                <input 
+                    type="file" 
+                    required
+                    className="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:bg-[#C0A080] file:text-white hover:file:bg-[#2C3E50] transition-all"
+                    onChange={(e) => setFormData({...formData, proofFile: e.target.files[0]})}
+                />
+            </div>
+        </div>
 
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Additional Notes</label>
-                                <textarea 
-                                    rows="3"
-                                    className="w-full p-3 border border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all resize-none"
-                                    placeholder="Any specific requirements or products you are interested in?"
-                                    onChange={(e) => setFormData({...formData, notes: e.target.value})}
-                                />
-                            </div>
+        {/* Reason for Visit */}
+        <div className="space-y-2">
+            <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Describe the reason for Visit</label>
+            <textarea 
+                rows="4"
+                required
+                className="w-full p-3 border border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all resize-none"
+                placeholder="Please provide details about your visit purpose..."
+                onChange={(e) => setFormData({...formData, visitReason: e.target.value})}
+            />
+        </div>
 
-                            <button 
-                                type="submit"
-                                className="w-full bg-[#2C3E50] text-white py-4 font-bold uppercase text-xs tracking-[0.2em] hover:bg-[#C0A080] transition-all duration-300 shadow-lg hover:shadow-xl"
-                            >
-                                Request Appointment
-                            </button>
+        {/* Submit Button */}
+        <button 
+            type="submit"
+            className="w-full bg-[#2C3E50] text-white py-4 font-bold uppercase text-xs tracking-[0.2em] hover:bg-[#C0A080] transition-all duration-300 shadow-lg hover:shadow-xl"
+        >
+            Request Appointment
+        </button>
 
-                        </form>
-                    </div>
+    </form>
+</div>
 
                 </div>
             </div>

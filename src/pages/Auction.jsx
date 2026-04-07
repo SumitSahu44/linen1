@@ -79,106 +79,121 @@ const Auction = () => {
                     <p className="text-gray-500 text-lg mb-8">
                         Bid for premium linens and exclusive collections
                     </p>
-                    <button className="px-8 py-4 bg-[#C0A080] text-white font-bold uppercase tracking-widest hover:bg-[#2C3E50] transition">
-                        Start Bidding Today
-                    </button>
+                  
                 </div>
 
-                {/* Auction Items */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-                    {auctionItems.map((item, idx) => (
-                        <motion.div
-                            key={item.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl hover:border-[#C0A080] transition"
-                        >
+           <section className="py-20 bg-gray-50 px-6">
+    <div className="max-w-4xl mx-auto">
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="bg-white shadow-2xl border-t-4 border-[#C0A080] rounded-b-xl overflow-hidden"
+        >
+            {/* Header Section */}
+            <div className="bg-[#2C3E50] p-8 text-center text-white">
+                <h2 className="text-3xl font-serif tracking-tight mb-2">e-Auction Participation Form</h2>
+                <p className="text-gray-400 text-xs uppercase tracking-[0.3em] font-medium">Official Trade Enquiry Portal</p>
+            </div>
 
-                            {/* Image */}
-                            <div className="relative">
-                                <img
-                                    src={item.image}
-                                    alt={item.title}
-                                    className="w-full h-56 object-cover"
-                                />
+            <form className="p-8 md:p-12 space-y-8">
+                <div className="grid md:grid-cols-2 gap-8">
+                    {/* 1. Name of the Participant */}
+                    <div className="flex flex-col gap-2">
+                        <label className="text-[10px] uppercase tracking-widest font-black text-gray-400">Name of the Participant *</label>
+                        <input 
+                            type="text" 
+                            className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-bold uppercase" 
+                            placeholder="Full Name" 
+                            required 
+                        />
+                    </div>
 
-                                {/* Timer Badge */}
-                                <div className="absolute top-3 left-3 bg-white/90 px-3 py-1 text-xs font-semibold flex items-center gap-1 shadow">
-                                    <FaClock className="text-[#C0A080]" />
-                                    {item.endsWith}
-                                </div>
-                            </div>
-
-                            {/* Content */}
-                            <div className="p-6">
-                                <h4 className="font-semibold text-[#2C3E50] mb-3 line-clamp-2 hover:text-[#C0A080] transition">
-                                    {item.title}
-                                </h4>
-
-                                {/* Pricing */}
-                                <div className="mb-4">
-                                    <p className="text-xs text-gray-500 uppercase mb-1">
-                                        Current Bid
-                                    </p>
-                                    <p className="text-2xl font-bold text-[#C0A080]">
-                                        ₹{item.currentBid.toLocaleString()}
-                                    </p>
-                                </div>
-
-                                <div className="flex justify-between text-sm mb-4">
-                                    <div>
-                                        <p className="text-gray-500 text-xs">Start</p>
-                                        <p className="font-semibold">₹{item.startingPrice}</p>
-                                    </div>
-                                    <div>
-                                        <p className="text-gray-500 text-xs">Bids</p>
-                                        <p className="font-semibold">{item.bids}</p>
-                                    </div>
-                                </div>
-
-                                <button className="w-full bg-[#2C3E50] text-white py-3 uppercase text-xs font-bold tracking-widest hover:bg-[#C0A080] transition">
-                                    Place Bid
-                                </button>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* How It Works */}
-                <div className="bg-gradient-to-r from-[#2C3E50] to-[#1A252F] text-white py-16 px-10 rounded-lg">
-                    <h3 className="text-2xl font-serif text-center mb-12">
-                        How <span className="lowercase">e</span>-Auction Works
-                    </h3>
-
-                    <div className="grid md:grid-cols-4 gap-10 text-center">
-                        
-                        <div>
-                            <FaUserPlus className="text-3xl mx-auto mb-4 text-[#C0A080]" />
-                            <p className="font-semibold mb-2">Register</p>
-                            <p className="text-sm opacity-80">Create your account</p>
-                        </div>
-
-                        <div>
-                            <FaGavel className="text-3xl mx-auto mb-4 text-[#C0A080]" />
-                            <p className="font-semibold mb-2">Browse & Bid</p>
-                            <p className="text-sm opacity-80">Explore and place bids</p>
-                        </div>
-
-                        <div>
-                            <FaClock className="text-3xl mx-auto mb-4 text-[#C0A080]" />
-                            <p className="font-semibold mb-2">Wait for End</p>
-                            <p className="text-sm opacity-80">Highest bid wins</p>
-                        </div>
-
-                        <div>
-                            <FaShoppingCart className="text-3xl mx-auto mb-4 text-[#C0A080]" />
-                            <p className="font-semibold mb-2">Checkout</p>
-                            <p className="text-sm opacity-80">Complete purchase</p>
-                        </div>
-
+                    {/* 2. Legal Name of the Business */}
+                    <div className="flex flex-col gap-2">
+                        <label className="text-[10px] uppercase tracking-widest font-black text-gray-400">Legal Name of the Business *</label>
+                        <input 
+                            type="text" 
+                            className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-bold uppercase" 
+                            placeholder="Company Name" 
+                            required 
+                        />
                     </div>
                 </div>
+
+                {/* 3. Business Address with Pin code */}
+                <div className="flex flex-col gap-2">
+                    <label className="text-[10px] uppercase tracking-widest font-black text-gray-400">Business Address with Pin code *</label>
+                    <input 
+                        type="text" 
+                        className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-bold uppercase" 
+                        placeholder="Complete Office Address & Pincode" 
+                        required 
+                    />
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-8">
+                    {/* 4. GST No. */}
+                    <div className="flex flex-col gap-2">
+                        <label className="text-[10px] uppercase tracking-widest font-black text-gray-400">GST No. *</label>
+                        <input 
+                            type="text" 
+                            className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-bold uppercase" 
+                            placeholder="GSTIN Number" 
+                            required 
+                        />
+                    </div>
+
+                    {/* 5. Mobile No. */}
+                    <div className="flex flex-col gap-2">
+                        <label className="text-[10px] uppercase tracking-widest font-black text-gray-400">Mobile No. *</label>
+                        <input 
+                            type="tel" 
+                            className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-bold" 
+                            placeholder="+91 00000 00000" 
+                            required 
+                        />
+                    </div>
+
+                    {/* 6. Email Id */}
+                    <div className="flex flex-col gap-2">
+                        <label className="text-[10px] uppercase tracking-widest font-black text-gray-400">Email Id *</label>
+                        <input 
+                            type="email" 
+                            className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-bold" 
+                            placeholder="official@email.com" 
+                            required 
+                        />
+                    </div>
+                </div>
+
+                {/* 7. Upload GST Certificate */}
+                <div className="flex flex-col gap-4">
+                    <label className="text-[10px] uppercase tracking-widest font-black text-gray-400">Upload GST Certificate (PDF/Image)</label>
+                    <div className="relative border-2 border-dashed border-gray-100 p-10 rounded-xl hover:border-[#C0A080] transition-all bg-gray-50 flex flex-col items-center justify-center gap-2 group cursor-pointer">
+                        <input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                        <svg className="w-8 h-8 text-gray-300 group-hover:text-[#C0A080] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a2 2 0 002 2h12 a2 2 0 002-2v-1M16 8l-4-4m0 0L8 8m4-4v12" />
+                        </svg>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Click to upload document</p>
+                    </div>
+                </div>
+
+                {/* Submit Button */}
+                <div className="pt-6">
+                    <motion.button 
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full bg-[#2C3E50] text-white py-5 font-black uppercase text-[20px]  hover:bg-[#C0A080] transition-all shadow-xl"
+                    >
+                        Submit Auction Entry
+                    </motion.button>
+                </div>
+            </form>
+        </motion.div>
+    </div>
+</section>
+
+               
 
             </div>
         </div>

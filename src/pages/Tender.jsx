@@ -12,59 +12,35 @@ const Tender = () => {
                 <h2 className="text-4xl font-serif text-[#2C3E50] mb-2">Tenders & e-Auctions</h2>
                 <p className="text-[#C0A080] mb-12 uppercase tracking-widest text-sm">Official Procurement Portal</p>
 
-                <div className="grid lg:grid-cols-3 gap-8">
-                    {/* Active Auctions Table */}
-                    <div className="lg:col-span-2 bg-white shadow-sm border border-gray-100 overflow-hidden">
-                        <div className="bg-[#2C3E50] p-4 text-white font-bold text-sm tracking-widest">ACTIVE PORTAL</div>
-                        <table className="w-full text-left">
-                            <thead className="bg-gray-50 border-b">
-                                <tr>
-                                    <th className="p-4 text-xs font-bold text-gray-400 uppercase">Tender ID</th>
-                                    <th className="p-4 text-xs font-bold text-gray-400 uppercase">Material Description</th>
-                                    <th className="p-4 text-xs font-bold text-gray-400 uppercase">Status</th>
-                                    <th className="p-4 text-xs font-bold text-gray-400 uppercase">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {activeAuctions.map((auc, i) => (
-                                    <tr key={i} className="border-b hover:bg-gray-50 transition-colors">
-                                        <td className="p-4 text-sm font-mono font-bold">{auc.id}</td>
-                                        <td className="p-4 text-sm text-gray-600">{auc.item}</td>
-                                        <td className="p-4">
-                                            <span className={`px-3 py-1 text-[10px] font-bold rounded-full ${auc.status === 'Live' ? 'bg-green-100 text-green-600 animate-pulse' : 'bg-blue-100 text-blue-600'}`}>
-                                                {auc.status}
-                                            </span>
-                                        </td>
-                                        <td className="p-4">
-                                            <button className="text-[#C0A080] text-xs font-bold hover:underline">BID NOW</button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+          <div className="max-w-7xl mx-auto px-6 py-12">
+    <div className="bg-white shadow-sm border border-gray-100 overflow-hidden">
+        {/* Header Bar */}
+        <div className="bg-[#2C3E50] p-4 text-white font-bold text-sm tracking-[0.3em] flex items-center justify-between">
+            <span>ACTIVE PORTAL</span>
+            {/* <span className="text-[10px] bg-[#C0A080] px-2 py-0.5 rounded italic font-medium">Updated Live</span> */}
+        </div>
 
-                    {/* e-Quotation Sidebar Form */}
-                    <div className="bg-white p-8 shadow-sm border border-gray-100">
-                        <h3 className="text-xl font-serif mb-4">Quick e-Quotation</h3>
-                        <p className="text-xs text-gray-400 mb-6">Submit your specs to receive a digital quote in 24 hours.</p>
-                        <form className="space-y-4">
-                            <input type="text" placeholder="Material Type" className="w-full p-3 bg-gray-50 border-none text-sm outline-none focus:ring-1 ring-[#C0A080]" />
-                            <input type="number" placeholder="Quantity (Meters/Kg)" className="w-full p-3 bg-gray-50 border-none text-sm outline-none focus:ring-1 ring-[#C0A080]" />
-                            <button className="w-full bg-[#C0A080] text-white py-3 text-xs font-bold tracking-widest hover:bg-[#2C3E50] transition-all">
-                                REQUEST QUOTE
-                            </button>
-                        </form>
-                    </div>
-                </div>
+        {/* Message Container */}
+        <div className="py-24 px-6 flex flex-col items-center justify-center text-center">
+            <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-6 border border-gray-100">
+                <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+            </div>
+            
+            <h3 className="text-2xl font-serif text-[#2C3E50] mb-2 italic">
+                At present, No EOI published
+            </h3>
+            
+            <p className="text-gray-400 text-[11px] uppercase tracking-[0.2em] font-medium max-w-md">
+                Please check back later for active trade enquiries or digital auctions from Parekh Textiles.
+            </p>
+            
+            <div className="mt-8 w-24 h-0.5 bg-gray-100"></div>
+        </div>
+    </div>
+</div>
 
-                {/* Circulars/Notice Board */}
-                <div className="mt-12 bg-white p-6 border-l-4 border-[#2C3E50] shadow-sm">
-                    <h4 className="font-bold text-[#2C3E50] mb-2 uppercase text-xs tracking-widest">Latest Notice Board</h4>
-                    <marquee className="text-sm text-gray-500 italic">
-                        New Contract: Supply of 100% Cotton Bedsheets for Northern Railway (Kolkata Division) is now open for bidding. | Please update your GST profiles by March 30th.
-                    </marquee>
-                </div>
             </div>
         </div>
     );
