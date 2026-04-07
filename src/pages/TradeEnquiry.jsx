@@ -43,22 +43,7 @@ const TradeEnquiry = () => {
                 </div>
             </section>
 
-            {/* --- TRUST STATS BAR --- */}
-            <div className="relative z-20 -mt-12 max-w-5xl mx-auto px-6">
-                <div className="grid grid-cols-2 md:grid-cols-4 bg-white shadow-2xl py-8 rounded-sm border-b-4 border-[#C0A080]">
-                    {[
-                        { label: "Countries Exported", value: "25+" },
-                        { label: "Annual Production", value: "1M+ Mtr" },
-                        { label: "Partner Hotels", value: "500+" },
-                        { label: "Years Excellence", value: "30+" },
-                    ].map((stat, i) => (
-                        <div key={i} className="text-center border-r last:border-0 border-gray-100 px-4">
-                            <h3 className="text-2xl font-serif text-[#2C3E50]">{stat.value}</h3>
-                            <p className="text-[10px] text-gray-400 uppercase tracking-widest mt-1 font-bold">{stat.label}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
+           
 
             {/* --- FORM SECTION --- */}
             <section className="py-24 px-6 bg-[#F9FAFB]">
@@ -72,11 +57,11 @@ const TradeEnquiry = () => {
                                 <div className="space-y-4 text-[#2C3E50]">
                                     <p className="text-sm leading-relaxed">
                                         <strong>Headquarters:</strong><br />
-                                        Parekh Tower, Textile Market Area,<br />
-                                        Surat, Gujarat - 395002
+                                      KOLKATA, WB,INDIA
+                                      
                                     </p>
                                     <p className="text-sm"><strong>Email:</strong> exports@parekhlinen.com</p>
-                                    <p className="text-sm"><strong>Support:</strong> +91 98765 43210</p>
+                                    <p className="text-sm"><strong>Support:</strong> 6353778329</p>
                                 </div>
                             </div>
 
@@ -90,48 +75,77 @@ const TradeEnquiry = () => {
                         </div>
 
                         {/* Right: The Form */}
-                        <div className="lg:col-span-2 bg-white p-8 md:p-12 shadow-sm border border-gray-100">
-                            <form className="grid md:grid-cols-2 gap-8">
-                                <div className="flex flex-col gap-2">
-                                    <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Full Name</label>
-                                    <input type="text" className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm" placeholder="John Doe" />
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Company Name</label>
-                                    <input type="text" className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm" placeholder="Acme Textiles Ltd" />
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Work Email</label>
-                                    <input type="email" className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm" placeholder="john@company.com" />
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Phone Number</label>
-                                    <input type="tel" className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm" placeholder="+91 00000 00000" />
-                                </div>
-                                <div className="flex flex-col gap-2 md:col-span-2">
-                                    <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Interest Category</label>
-                                    <select className="border-b-2 border-gray-100 py-3 bg-transparent outline-none focus:border-[#C0A080] text-sm cursor-pointer">
-                                        <option>Hospitality & Hotel Linen</option>
-                                        <option>Bulk Fabric Export</option>
-                                        <option>Custom Manufacturing (OEM)</option>
-                                        <option>Institutional Supply</option>
-                                    </select>
-                                </div>
-                                <div className="flex flex-col gap-2 md:col-span-2">
-                                    <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Message / Requirements</label>
-                                    <textarea rows="4" className="border-2 border-gray-100 p-4 rounded-sm focus:border-[#C0A080] outline-none transition-colors text-sm bg-gray-50/30" placeholder="Please describe your volume requirements..."></textarea>
-                                </div>
-                                <div className="md:col-span-2 pt-4">
-                                    <motion.button 
-                                        whileHover={{ backgroundColor: '#1A252F' }}
-                                        className="w-full bg-[#C0A080] text-white py-5 text-[11px] font-bold uppercase tracking-[0.5em] transition-all shadow-xl"
-                                    >
-                                        Send Professional Inquiry
-                                    </motion.button>
-                                </div>
-                            </form>
-                        </div>
+                 <div className="lg:col-span-2 bg-white p-8 md:p-12 shadow-sm border border-gray-100">
+    <form className="grid md:grid-cols-2 gap-8">
+        {/* 1. Name of the Trader */}
+        <div className="flex flex-col gap-2">
+            <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Name of the Trader</label>
+            <input type="text" className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-medium uppercase" placeholder="Enter Trader Name" />
+        </div>
 
+        {/* 2. Business Name */}
+        <div className="flex flex-col gap-2">
+            <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Business Name</label>
+            <input type="text" className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-medium uppercase" placeholder="Enter Business Name" />
+        </div>
+
+        {/* 3. Business Address with Pin code */}
+        <div className="flex flex-col gap-2 md:col-span-2">
+            <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Business Address with Pin code</label>
+            <input type="text" className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-medium uppercase" placeholder="Full Address with Pincode" />
+        </div>
+
+        {/* 4. GST No. */}
+        <div className="flex flex-col gap-2">
+            <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">GST No.</label>
+            <input type="text" className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-medium uppercase" placeholder="22AAAAA0000A1Z5" />
+        </div>
+
+        {/* 5. Mobile No. */}
+        <div className="flex flex-col gap-2">
+            <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Mobile No.</label>
+            <input type="tel" className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-medium" placeholder="+91 00000 00000" />
+        </div>
+
+        {/* 6. Email id */}
+        <div className="flex flex-col gap-2">
+            <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Email id</label>
+            <input type="email" className="border-b-2 border-gray-100 py-2 focus:border-[#C0A080] outline-none transition-colors text-sm font-medium" placeholder="business@email.com" />
+        </div>
+
+        {/* 7. Inquiry Type (Roll-down mode) */}
+        <div className="flex flex-col gap-2">
+            <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Inquiry Type</label>
+            <select className="border-b-2 border-gray-100 py-2 bg-transparent outline-none focus:border-[#C0A080] text-sm font-medium cursor-pointer uppercase">
+                <option value="">Select Option</option>
+                <option value="bulk">For Bulk Purchase</option>
+                <option value="retail">For Retail Purchase</option>
+                <option value="jobwork">For Job Work Contract</option>
+                <option value="others">Others</option>
+            </select>
+        </div>
+
+        {/* 8. Upload GST Certificate */}
+        <div className="flex flex-col gap-2 md:col-span-2">
+            <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Upload GST Certificate</label>
+            <div className="relative border-2 border-dashed border-gray-100 p-6 rounded-sm hover:border-[#C0A080] transition-all bg-gray-50/30 flex flex-col items-center justify-center cursor-pointer">
+                <input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                <p className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Click to upload or drag & drop</p>
+            </div>
+        </div>
+
+        {/* Submit Button */}
+        <div className="md:col-span-2 pt-4">
+            <motion.button 
+                whileHover={{ backgroundColor: '#1A252F' }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-[#C0A080] text-white py-5 text-[11px] font-bold uppercase tracking-[0.5em] transition-all shadow-xl"
+            >
+                Send Professional Inquiry
+            </motion.button>
+        </div>
+    </form>
+</div>
                     </div>
                 </div>
             </section>

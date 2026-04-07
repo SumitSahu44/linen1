@@ -1,4 +1,5 @@
 // Basic Routing Structure
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
@@ -24,39 +25,60 @@ import MediaGallery from './pages/MediaGallery';
 import Quotation from './pages/Quotation';
 import Auction from './pages/Auction';
 import IndiaMap from './features/Maps/IndiaMap';
+import Loader from '../Loader';
 function App() {
-  return (
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // 3. Fake loading time (2-3 seconds) ya window.onload ka wait
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2500); // 2.5 seconds tak loader dikhega
+
+    return () => clearTimeout(timer);
+  }, []);
+
+return (
     <Router>
-      <ScrollToTop />
-      <div className="font-sans text-slate-900 bg-slate-50">
-        <Navbar />
+      {/* 4. Agar loading true hai toh Loader dikhao, varna content */}
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <ScrollToTop />
+          <div className="font-sans text-slate-900 bg-slate-50">
+            <Navbar />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/media-gallery" element={<MediaGallery />} />
-          <Route path="/management" element={<Management />} />
-          <Route path="/trade-enquiry" element={<TradeEnquiry />} />
-          <Route path="/quotation" element={<Quotation />} />
-          <Route path="/auction" element={<Auction />} />
-          <Route path="/tender-contract" element={<Tender />} />
-          <Route path="/career" element={<Career />} />
-          <Route path="/appointment" element={<Appointment />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/circular" element={<Circular />} />
-          <Route path="/reviews" element={<CustomerReviews />} />
-          <Route path="/india-map" element={<IndiaMap />} />
-        </Routes>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/media-gallery" element={<MediaGallery />} />
+              <Route path="/management" element={<Management />} />
+              <Route path="/trade-enquiry" element={<TradeEnquiry />} />
+              <Route path="/quotation" element={<Quotation />} />
+              <Route path="/auction" element={<Auction />} />
+              <Route path="/tender-contract" element={<Tender />} />
+              <Route path="/career" element={<Career />} />
+              <Route path="/appointment" element={<Appointment />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/circular" element={<Circular />} />
+              <Route path="/reviews" element={<CustomerReviews />} />
+              <Route path="/india-map" element={<IndiaMap />} />
+            </Routes>
 
-        <LiveChat />
-        <FloatingWhatsApp phoneNumber="+91XXXXXXXXXX" />
-        <Footer />
-      </div>
+            <LiveChat />
+            <FloatingWhatsApp phoneNumber="+91XXXXXXXXXX" />
+            <Footer />
+          </div>
+        </>
+      )}
     </Router>
   );
+
 }
 
 

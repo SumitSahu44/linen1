@@ -27,15 +27,11 @@ const Contact = () => {
                                 <p className="text-gray-600">Kolkata, West Bengal, India</p>
                             </div>
 
-                            <div className="group">
-                                <p className="font-bold text-[#C0A080] mb-2 uppercase text-sm tracking-widest">✉️ Email</p>
-                                <a href="mailto:contact@parekhlinen.com" className="text-gray-700 hover:text-[#C0A080] transition-colors text-lg">contact@parekhlinen.com</a>
-                                <p className="text-gray-600 text-sm mt-1">info@parekhlinen.com</p>
-                            </div>
+                       
 
                             <div className="group">
                                 <p className="font-bold text-[#C0A080] mb-2 uppercase text-sm tracking-widest">📞 Phone</p>
-                                <a href="tel:+913300000000" className="text-gray-700 hover:text-[#C0A080] transition-colors text-lg">+91 33 0000 0000</a>
+                                <a href="tel:+913300000000" className="text-gray-700 hover:text-[#C0A080] transition-colors text-lg">6353778329</a>
                                 <p className="text-gray-600 text-sm mt-1">Mon - Fri: 9AM - 6PM IST</p>
                             </div>
 

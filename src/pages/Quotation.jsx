@@ -54,167 +54,131 @@ const Quotation = () => {
                     <p className="text-gray-500">Get competitive quotes for bulk orders with customized specifications</p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8 mb-12">
-                    <div className="bg-white p-8 border border-gray-200 text-center">
-                        <div className="text-4xl mb-4">⚡</div>
-                        <h3 className="font-semibold text-[#2C3E50] mb-2">Fast Response</h3>
-                        <p className="text-sm text-gray-500">Get quotation within 24 hours</p>
-                    </div>
-                    <div className="bg-white p-8 border border-gray-200 text-center">
-                        <div className="text-4xl mb-4">💰</div>
-                        <h3 className="font-semibold text-[#2C3E50] mb-2">Best Pricing</h3>
-                        <p className="text-sm text-gray-500">Competitive rates for bulk orders</p>
-                    </div>
-                    <div className="bg-white p-8 border border-gray-200 text-center">
-                        <div className="text-4xl mb-4">🎯</div>
-                        <h3 className="font-semibold text-[#2C3E50] mb-2">Customization</h3>
-                        <p className="text-sm text-gray-500">Tailor products to your needs</p>
-                    </div>
-                </div>
+          
 
-                <form onSubmit={handleSubmit} className="bg-white p-12 border border-gray-200">
-                    <div className="grid md:grid-cols-2 gap-6 mb-8">
-                        <div>
-                            <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Company Name *</label>
-                            <input 
-                                type="text" 
-                                name="companyName"
-                                value={formData.companyName}
-                                onChange={handleChange}
-                                required
-                                className="w-full p-4 border border-gray-300 focus:border-[#C0A080] outline-none transition-colors"
-                                placeholder="Enter company name"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Contact Person *</label>
-                            <input 
-                                type="text" 
-                                name="contactPerson"
-                                value={formData.contactPerson}
-                                onChange={handleChange}
-                                required
-                                className="w-full p-4 border border-gray-300 focus:border-[#C0A080] outline-none transition-colors"
-                                placeholder="Full name"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Email *</label>
-                            <input 
-                                type="email" 
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                                className="w-full p-4 border border-gray-300 focus:border-[#C0A080] outline-none transition-colors"
-                                placeholder="Email address"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Phone *</label>
-                            <input 
-                                type="tel" 
-                                name="phone"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                required
-                                className="w-full p-4 border border-gray-300 focus:border-[#C0A080] outline-none transition-colors"
-                                placeholder="Phone number"
-                            />
-                        </div>
-                    </div>
+       <form onSubmit={handleSubmit} className="bg-white p-8 md:p-12 border border-gray-200 shadow-sm">
+    <div className="grid md:grid-cols-2 gap-6 mb-8">
+        {/* 1. Name of the Trader */}
+        <div>
+            <label className="block text-[11px] font-black uppercase tracking-widest text-[#2C3E50] mb-3">Name of the Trader *</label>
+            <input 
+                type="text" 
+                name="traderName"
+                value={formData.traderName}
+                onChange={handleChange}
+                required
+                className="w-full p-4 border border-gray-200 focus:border-[#C0A080] outline-none transition-colors text-sm uppercase"
+                placeholder="Full Name"
+            />
+        </div>
 
-                    <div className="grid md:grid-cols-2 gap-6 mb-8">
-                        <div>
-                            <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Product Type *</label>
-                            <select 
-                                name="productType"
-                                value={formData.productType}
-                                onChange={handleChange}
-                                className="w-full p-4 border border-gray-300 focus:border-[#C0A080] outline-none transition-colors"
-                            >
-                                <option value="bedsheet">Bedsheet</option>
-                                <option value="fabric">Fabric Roll</option>
-                                <option value="linen">Linen</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Quantity *</label>
-                            <input 
-                                type="text" 
-                                name="quantity"
-                                value={formData.quantity}
-                                onChange={handleChange}
-                                required
-                                className="w-full p-4 border border-gray-300 focus:border-[#C0A080] outline-none transition-colors"
-                                placeholder="e.g., 1000 pieces"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-semibold text-[#2C3E50] mb-3">GSM</label>
-                            <input 
-                                type="text" 
-                                name="gsm"
-                                value={formData.gsm}
-                                onChange={handleChange}
-                                className="w-full p-4 border border-gray-300 focus:border-[#C0A080] outline-none transition-colors"
-                                placeholder="Grams per square meter"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Thread Count</label>
-                            <input 
-                                type="text" 
-                                name="threadCount"
-                                value={formData.threadCount}
-                                onChange={handleChange}
-                                className="w-full p-4 border border-gray-300 focus:border-[#C0A080] outline-none transition-colors"
-                                placeholder="e.g., 1000 TC"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Color</label>
-                            <input 
-                                type="text" 
-                                name="color"
-                                value={formData.color}
-                                onChange={handleChange}
-                                className="w-full p-4 border border-gray-300 focus:border-[#C0A080] outline-none transition-colors"
-                                placeholder="Preferred color"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Delivery Deadline</label>
-                            <input 
-                                type="date" 
-                                name="deadline"
-                                value={formData.deadline}
-                                onChange={handleChange}
-                                className="w-full p-4 border border-gray-300 focus:border-[#C0A080] outline-none transition-colors"
-                            />
-                        </div>
-                    </div>
+        {/* 2. Business Name */}
+        <div>
+            <label className="block text-[11px] font-black uppercase tracking-widest text-[#2C3E50] mb-3">Business Name *</label>
+            <input 
+                type="text" 
+                name="businessName"
+                value={formData.businessName}
+                onChange={handleChange}
+                required
+                className="w-full p-4 border border-gray-200 focus:border-[#C0A080] outline-none transition-colors text-sm uppercase"
+                placeholder="Company Name"
+            />
+        </div>
 
-                    <div className="mb-8">
-                        <label className="block text-sm font-semibold text-[#2C3E50] mb-3">Special Specifications</label>
-                        <textarea 
-                            name="specifications"
-                            value={formData.specifications}
-                            onChange={handleChange}
-                            rows="5"
-                            className="w-full p-4 border border-gray-300 focus:border-[#C0A080] outline-none transition-colors"
-                            placeholder="Any special requirements, certifications, or customizations?"
-                        />
-                    </div>
+        {/* 3. Business Address with Pin Code */}
+        <div className="md:col-span-2">
+            <label className="block text-[11px] font-black uppercase tracking-widest text-[#2C3E50] mb-3">Business Address with Pin Code *</label>
+            <input 
+                type="text" 
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                required
+                className="w-full p-4 border border-gray-200 focus:border-[#C0A080] outline-none transition-colors text-sm uppercase"
+                placeholder="Full Address & Pincode"
+            />
+        </div>
 
-                    <button 
-                        type="submit"
-                        className="w-full bg-[#2C3E50] text-white py-4 uppercase font-bold tracking-widest hover:bg-[#C0A080] transition-colors"
-                    >
-                        Request Quotation
-                    </button>
-                </form>
+        {/* 4. GST No. */}
+        <div>
+            <label className="block text-[11px] font-black uppercase tracking-widest text-[#2C3E50] mb-3">GST No. *</label>
+            <input 
+                type="text" 
+                name="gstNo"
+                value={formData.gstNo}
+                onChange={handleChange}
+                required
+                className="w-full p-4 border border-gray-200 focus:border-[#C0A080] outline-none transition-colors text-sm uppercase"
+                placeholder="Enter GST Number"
+            />
+        </div>
+
+        {/* 5. Mobile No. */}
+        <div>
+            <label className="block text-[11px] font-black uppercase tracking-widest text-[#2C3E50] mb-3">Mobile No. *</label>
+            <input 
+                type="tel" 
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                required
+                className="w-full p-4 border border-gray-200 focus:border-[#C0A080] outline-none transition-colors text-sm"
+                placeholder="+91 00000 00000"
+            />
+        </div>
+
+        {/* 6. Email id */}
+        <div>
+            <label className="block text-[11px] font-black uppercase tracking-widest text-[#2C3E50] mb-3">Email id *</label>
+            <input 
+                type="email" 
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full p-4 border border-gray-200 focus:border-[#C0A080] outline-none transition-colors text-sm"
+                placeholder="business@email.com"
+            />
+        </div>
+
+        {/* 7. Quotation Options (Roll-down mode) */}
+        <div>
+            <label className="block text-[11px] font-black uppercase tracking-widest text-[#2C3E50] mb-3">Quotation Type *</label>
+            <select 
+                name="quotationType"
+                value={formData.quotationType}
+                onChange={handleChange}
+                className="w-full p-4 border border-gray-200 focus:border-[#C0A080] outline-none transition-colors text-sm font-bold uppercase cursor-pointer bg-white"
+            >
+                <option value="">Select Quotation For</option>
+                <option value="white">Quotation for White Bedsheets</option>
+                <option value="printed">Quotation for Printed Bedsheets</option>
+            </select>
+        </div>
+    </div>
+
+    {/* 8. Particulars of the size of Bedsheets */}
+    <div className="mb-8">
+        <label className="block text-[11px] font-black uppercase tracking-widest text-[#2C3E50] mb-3">Particulars of the size of Bedsheets *</label>
+        <textarea 
+            name="bedsheetSize"
+            value={formData.bedsheetSize}
+            onChange={handleChange}
+            required
+            rows="4"
+            className="w-full p-4 border border-gray-200 focus:border-[#C0A080] outline-none transition-colors text-sm uppercase"
+            placeholder="Describe size details (e.g., King, Queen, Single, or specific dimensions like 90x100 inches)..."
+        />
+    </div>
+
+    <button 
+        type="submit"
+        className="w-full bg-[#2C3E50] text-white py-5 uppercase font-black text-[20px] hover:bg-[#C0A080] transition-all shadow-lg"
+    >
+        Request Quotation
+    </button>
+</form>
             </div>
         </div>
     );

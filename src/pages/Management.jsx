@@ -8,30 +8,21 @@ const Management = () => {
     ];
 
     return (
-        <div className="pt-32 pb-20 px-6">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-serif text-[#2C3E50]">The Leadership Team</h2>
-                    <div className="w-20 h-1 bg-[#C0A080] mx-auto mt-4"></div>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-12">
-                    {team.map((member, i) => (
-                        <motion.div
-                            key={i}
-                            whileHover={{ y: -10 }}
-                            className="text-center"
-                        >
-                            <div className="relative mb-6 overflow-hidden aspect-[3/4]">
-                                <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-                            </div>
-                            <h3 className="text-xl font-bold text-[#2C3E50]">{member.name}</h3>
-                            <p className="text-[#C0A080] uppercase text-xs tracking-[0.2em] mt-1">{member.role}</p>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
+  <div className="pt-32 pb-20 px-6">
+    <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+            <h2 className="text-4xl font-serif text-[#2C3E50]">The Leadership Team</h2>
+            <div className="w-20 h-1 bg-[#C0A080] mx-auto mt-4 mb-6"></div>
+            
+            {/* Added P Tag with your content */}
+            <p className="max-w-2xl mx-auto text-gray-500 text-sm md:text-base uppercase tracking-widest leading-relaxed font-medium">
+                Parekh Linen is administered and governed by the highly skilled, 
+                experienced and qualified Management.
+            </p>
         </div>
+
+    </div>
+</div>
     );
 };
 

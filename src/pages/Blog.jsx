@@ -14,19 +14,51 @@ const Blog = () => {
     ];
 
     return (
-        <div className="pt-32 pb-20 max-w-5xl mx-auto px-6">
-            <h2 className="text-4xl font-serif text-center mb-16 text-[#2C3E50]">Linen Insights & Circulars</h2>
-            <div className="space-y-12">
-                {posts.map((post, i) => (
-                    <article key={i} className="group cursor-pointer">
-                        <p className="text-[#C0A080] text-xs font-bold uppercase tracking-widest mb-2">{post.category} — {post.date}</p>
-                        <h3 className="text-2xl font-serif text-[#2C3E50] group-hover:text-[#C0A080] transition-colors">{post.title}</h3>
-                        <p className="mt-4 text-gray-500 leading-relaxed max-w-2xl">Read our latest insights about the evolving textile industry and our contributions to quality standards...</p>
-                        <div className="mt-6 w-10 h-[2px] bg-[#2C3E50] group-hover:w-20 transition-all"></div>
-                    </article>
-                ))}
-            </div>
+   <div className="pt-32 pb-20 max-w-5xl mx-auto px-6">
+    {/* Heading & Campaign Message */}
+    <div className="text-center mb-20">
+        <h2 className="text-4xl md:text-5xl font-serif mb-6 text-[#2C3E50]">
+            Linen Insights & Circulars
+        </h2>
+        
+        {/* New Campaign Line */}
+        <p className="text-gray-500 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-light italic">
+            "Join and participate in our nation-wide campaign to digitalize the Textile Sector, one of the largest sectors of India."
+        </p>
+        
+        <div className="mt-8 flex justify-center gap-2">
+            <div className="w-12 h-[1px] bg-[#C0A080]"></div>
+            <div className="w-2 h-2 rounded-full bg-[#C0A080]"></div>
+            <div className="w-12 h-[1px] bg-[#C0A080]"></div>
         </div>
+    </div>
+
+    {/* Articles List */}
+    <div className="space-y-16">
+        {posts.map((post, i) => (
+            <article key={i} className="group cursor-pointer border-l border-transparent hover:border-[#C0A080] pl-0 hover:pl-8 transition-all duration-500">
+                <p className="text-[#C0A080] text-[10px] font-black uppercase tracking-[0.3em] mb-3">
+                    {post.category} — {post.date}
+                </p>
+                
+                <h3 className="text-2xl md:text-3xl font-serif text-[#2C3E50] group-hover:text-[#C0A080] transition-colors duration-300">
+                    {post.title}
+                </h3>
+                
+                <p className="mt-4 text-gray-500 leading-relaxed max-w-2xl text-sm md:text-base">
+                    Read our latest insights about the evolving textile industry and our contributions to quality standards...
+                </p>
+                
+                <div className="mt-8 flex items-center gap-4">
+                    <div className="w-10 h-[2px] bg-[#2C3E50] group-hover:w-20 group-hover:bg-[#C0A080] transition-all duration-500"></div>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-gray-300 group-hover:text-[#C0A080] opacity-0 group-hover:opacity-100 transition-all">
+                        Read Article
+                    </span>
+                </div>
+            </article>
+        ))}
+    </div>
+</div>
     );
 };
 
