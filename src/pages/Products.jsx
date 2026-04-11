@@ -91,31 +91,35 @@ const Products = () => {
             <div className="max-w-[1600px] mx-auto">
                 
                 {/* Minimal Header */}
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-100 pb-8 gap-6">
-                    <div>
-                        <h1 className="text-3xl font-serif text-[#2C3E50] tracking-tight">
-                            Our <span className="italic text-[#C0A080]">Collections</span>
-                        </h1>
-                    </div>
+             <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 border-b border-gray-100 pb-8 gap-6">
+    {/* Title Section */}
+    <div className="text-center md:text-left w-full md:w-auto">
+        <h1 className="text-3xl font-serif text-[#2C3E50] tracking-tight">
+            Our <span className="italic text-[#C0A080]">Collections</span>
+        </h1>
+    </div>
 
-                    {/* Minimalist Tabs */}
-                    <div className="flex gap-8 overflow-x-auto no-scrollbar">
-                        {categories.map((tab) => (
-                            <button
-                                key={tab}
-                                onClick={() => setActiveTab(tab)}
-                                className={`text-[10px] uppercase tracking-[0.2em] font-bold transition-all relative ${
-                                    activeTab === tab ? 'text-[#C0A080]' : 'text-gray-400 hover:text-[#2C3E50]'
-                                }`}
-                            >
-                                {tab}
-                                {activeTab === tab && (
-                                    <motion.div layoutId="underline" className="absolute -bottom-2 left-0 w-full h-[2px] bg-[#C0A080]" />
-                                )}
-                            </button>
-                        ))}
-                    </div>
-                </div>
+    {/* Minimalist Tabs */}
+    <div className="flex justify-center md:justify-end gap-6 md:gap-8 overflow-x-auto no-scrollbar w-full md:w-auto px-4 md:px-0">
+        {categories.map((tab) => (
+            <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`text-[10px] uppercase tracking-[0.2em] font-bold transition-all relative whitespace-nowrap ${
+                    activeTab === tab ? 'text-[#C0A080]' : 'text-gray-400 hover:text-[#2C3E50]'
+                }`}
+            >
+                {tab}
+                {activeTab === tab && (
+                    <motion.div 
+                        layoutId="underline" 
+                        className="absolute -bottom-2 left-0 w-full h-[2px] bg-[#C0A080]" 
+                    />
+                )}
+            </button>
+        ))}
+    </div>
+</div>
 
                 {/* 4-Column Grid */}
                 <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">

@@ -28,6 +28,7 @@ const Navbar = () => {
      
 ];
     const moreLinks = [
+    { name: 'Trade Enquiry', path: '/trade-enquiry' },
     { name: 'e-Quotation', path: '/quotation' },
     { name: 'e-Auction', path: '/auction' },
     { name: 'Tender & Contract', path: '/tender-contract' },
@@ -35,8 +36,9 @@ const Navbar = () => {
     { name: 'Circular', path: '/circular' },
     { name: 'Blog', path: '/blog' },
     { name: 'Reviews', path: '/reviews' },
-    { name: 'Visit Appointment', path: '/appointment' }, // e-Form
-    { name: 'Textile Associates', path: '/india-map' },
+    { name: 'Visit with Appointment', path: '/appointment' }, 
+    { name: 'Media Gallery', path: '/media-gallery' }, 
+    { name: 'Our Textile Associates', path: '/india-map' },
    
 ];
     // Color tokens based on scroll state
