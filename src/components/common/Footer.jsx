@@ -84,7 +84,7 @@ const socialLinks = [
 
   <p className="text-gray-400 text-sm mb-3 flex items-center gap-2">
     <FaMapMarkerAlt className="text-[#C0A080]" />
-    KOLKATA, WB,India
+    KOLKATA, WB, India
   </p>
 
 <div className="space-y-4">

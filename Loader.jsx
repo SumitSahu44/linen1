@@ -62,7 +62,7 @@ const Loader = () => {
                         transition={{ delay: 0.5 }}
                         className="mt-3 text-[9px] text-[#C0A080] font-bold uppercase tracking-[0.5em]"
                     >
-                     KOLKATA, WB,India
+                     KOLKATA, WB, India
                     </motion.p>
                 </div>
 

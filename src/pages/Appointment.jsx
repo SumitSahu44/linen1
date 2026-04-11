@@ -85,7 +85,7 @@ const Appointment = () => {
                         <div className="border border-gray-200 p-6 rounded-sm text-center">
                             <FaMapMarkerAlt className="text-[#C0A080] mx-auto text-3xl mb-3" />
                             <p className="font-semibold text-[#2C3E50]">Factory Location</p>
-                            <p className="text-gray-500 text-sm">Industrial Hub, KOLKATA, WB,India</p>
+                            <p className="text-gray-500 text-sm">Industrial Hub, KOLKATA, WB, India</p>
                         </div>
                     </div>
 

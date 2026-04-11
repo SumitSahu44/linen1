@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 
 const Career = () => {
     const jobs = [
-        { title: "Production Manager", location: "KOLKATA, WB,India", type: "Full-Time" },
+        { title: "Production Manager", location: "KOLKATA, WB, India", type: "Full-Time" },
         { title: "Textile Designer", location: "Remote / On-site", type: "Contract" },
-        { title: "Quality Assurance Lead", location: "KOLKATA, WB,India", type: "Full-Time" }
+        { title: "Quality Assurance Lead", location: "KOLKATA, WB, India", type: "Full-Time" }
     ];
 
     return (

@@ -64,7 +64,7 @@ const Navbar = () => {
                             PAREKH <span className="font-light">LINEN</span>
                         </span>
                         <span className={`text-[9px] md:text-[10px] tracking-[0.35em] font-bolder opacity-70 group-hover:text-[#C0A080] uppercase transition-colors duration-300`}>
-                            KOLKATA, WB,India
+                            KOLKATA, WB, India
                         </span>
                     </div>
                 </Link>
