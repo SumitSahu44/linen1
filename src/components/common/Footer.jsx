@@ -1,13 +1,35 @@
 import { Link } from 'react-router-dom';
-import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaClock } from "react-icons/fa";
+import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaClock, FaFacebook } from "react-icons/fa";
+// import {  Linkedin, Twitter } from 'lucide-react';
+import { BsInstagram, BsTwitter } from 'react-icons/bs';
+import { LiaLinkedin } from 'react-icons/lia';
+
 
 const Footer = () => {
-    const socialLinks = [
-        { name: 'Facebook', url: 'https://facebook.com/parekhlinen', icon: 'f' },
-        { name: 'Instagram', url: 'https://instagram.com/parekhlinen', icon: '📷' },
-        { name: 'LinkedIn', url: 'https://linkedin.com/company/parekhlinen', icon: 'in' },
-        { name: 'Twitter', url: 'https://twitter.com/parekhlinen', icon: '𝕏' },
-    ];
+
+
+const socialLinks = [
+  { 
+    name: 'Facebook', 
+    url: 'https://facebook.com/parekhlinen', 
+    icon: <FaFacebook size={20} strokeWidth={1.5} /> 
+  },
+  { 
+    name: 'Instagram', 
+    url: 'https://instagram.com/parekhlinen', 
+    icon: <BsInstagram size={20} strokeWidth={1.5} /> 
+  },
+  { 
+    name: 'LinkedIn', 
+    url: 'https://linkedin.com/company/parekhlinen', 
+    icon: <LiaLinkedin size={30} strokeWidth={1.5} /> 
+  },
+  { 
+    name: 'Twitter', 
+    url: 'https://twitter.com/parekhlinen', 
+    icon: <BsTwitter size={20} strokeWidth={1.5} /> 
+  },
+];
 
     return (
         <footer className="bg-[#1A1A1A] text-white pt-20 pb-10 px-6">
@@ -62,22 +84,38 @@ const Footer = () => {
 
   <p className="text-gray-400 text-sm mb-3 flex items-center gap-2">
     <FaMapMarkerAlt className="text-[#C0A080]" />
-    Kolkata, India
+    KOLKATA, WB,India
   </p>
 
-  <p className="text-gray-400 text-sm mb-3 flex items-center gap-2">
-    <FaEnvelope className="text-[#C0A080]" />
-    <a href="mailto:info@parekhlinen.com" className="hover:text-white transition-colors">
-      info@parekhlinen.com
-    </a>
-  </p>
+<div className="space-y-4">
+  {/* Trade Enquiry Section */}
+  <div className="flex flex-col gap-1">
+    <p className="text-[#C0A080] text-[10px] font-bold uppercase tracking-[0.2em]">Trade Enquiry</p>
+    <p className="text-gray-400 text-sm flex items-center gap-2">
+      <FaEnvelope className="text-[#C0A080] shrink-0" />
+      <a href="mailto:trade-enquiry@parekhlinen.com" className="hover:text-white transition-colors truncate">
+        trade-enquiry@parekhlinen.com
+      </a>
+    </p>
+  </div>
 
-  <p className="text-gray-400 text-sm mb-3 flex items-center gap-2">
-    <FaPhone className="text-[#C0A080]" />
-    <a href="tel:+913300000000" className="hover:text-white transition-colors">
-      6353778329
-    </a>
-  </p>
+  {/* Customer Care Section */}
+  <div className="flex flex-col gap-1">
+    <p className="text-[#C0A080] text-[10px] font-bold uppercase tracking-[0.2em]">Customer Care</p>
+    <p className="text-gray-400 text-sm flex items-center gap-2">
+      <FaEnvelope className="text-[#C0A080] shrink-0" />
+      <a href="mailto:customer-care@parekhlinen.com" className="hover:text-white transition-colors truncate">
+        customer-care@parekhlinen.com
+      </a>
+    </p>
+  </div>
+</div>
+<p className="text-gray-400 text-sm mb-3 mt-3 flex items-center gap-2 group">
+  <FaPhone className="text-[#C0A080] group-hover:scale-110 transition-transform" />
+  <a href="tel:+916353778329" className="hover:text-white transition-colors">
+    6353778329
+  </a>
+</p>
 
   <p className="text-gray-400 text-sm flex items-center gap-2">
     <FaClock className="text-[#C0A080]" />

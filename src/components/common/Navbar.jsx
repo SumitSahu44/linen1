@@ -24,7 +24,7 @@ const Navbar = () => {
     { name: 'Contact Us', path: '/contact' },
     { name: 'Products', path: '/products' }, // Fabrics, Bedsheets & Linen अंदर
     { name: 'Product Gallery', path: '/media-gallery' },
-    { name: 'Management', path: '/management' },
+    { name: 'Our Management', path: '/management' },
      
 ];
     const moreLinks = [
@@ -64,7 +64,7 @@ const Navbar = () => {
                             PAREKH <span className="font-light">LINEN</span>
                         </span>
                         <span className={`text-[9px] md:text-[10px] tracking-[0.35em] font-bolder opacity-70 group-hover:text-[#C0A080] uppercase transition-colors duration-300`}>
-                            Kolkata, India
+                            KOLKATA, WB,India
                         </span>
                     </div>
                 </Link>

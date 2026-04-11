@@ -9,7 +9,7 @@ const Tender = () => {
     return (
         <div className="pt-32 pb-20 px-6 bg-[#F8F9FA]">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-4xl font-serif text-[#2C3E50] mb-2">Tenders & e-Auctions</h2>
+                <h2 className="text-4xl font-serif text-[#2C3E50] mb-2">Tender & Contract</h2>
                 <p className="text-[#C0A080] mb-12 uppercase tracking-widest text-sm">Official Procurement Portal</p>
 
           <div className="max-w-7xl mx-auto px-6 py-12">

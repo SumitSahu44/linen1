@@ -11,7 +11,7 @@ const Management = () => {
   <div className="pt-32 pb-20 px-6">
     <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif text-[#2C3E50]">The Leadership Team</h2>
+            <h2 className="text-4xl font-serif text-[#2C3E50]">Our Management</h2>
             <div className="w-20 h-1 bg-[#C0A080] mx-auto mt-4 mb-6"></div>
             
             {/* Added P Tag with your content */}
