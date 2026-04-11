@@ -61,7 +61,7 @@ const Hero = () => {
                   transition={{ duration: 0.6 }}
                   className="text-[#C0A080] uppercase tracking-[0.3em] font-semibold text-xs md:text-sm mb-6 block"
                 >
-                  Established Excellence since 1990
+                  Established Excellence since 2007
                 </motion.span>
 
                 <motion.h1

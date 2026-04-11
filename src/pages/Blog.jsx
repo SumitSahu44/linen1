@@ -16,22 +16,37 @@ const Blog = () => {
     return (
    <div className="pt-32 pb-20 max-w-5xl mx-auto px-6">
     {/* Heading & Campaign Message */}
-    <div className="text-center mb-20">
-        <h2 className="text-4xl md:text-5xl font-serif mb-6 text-[#2C3E50]">
-            Linen Insights & Circulars
-        </h2>
-        
-        {/* New Campaign Line */}
+<div className="text-center mb-20">
+    <h2 className="text-4xl md:text-5xl font-serif mb-6 text-[#2C3E50]">
+        Linen Insights & Circulars
+    </h2>
+    
+    {/* New Campaign Line */}
+    <div className="relative py-4">
         <p className="text-gray-500 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-light italic">
             "Join and participate in our nation-wide campaign to digitalize the Textile Sector, one of the largest sectors of India."
         </p>
         
-        <div className="mt-8 flex justify-center gap-2">
-            <div className="w-12 h-[1px] bg-[#C0A080]"></div>
-            <div className="w-2 h-2 rounded-full bg-[#C0A080]"></div>
-            <div className="w-12 h-[1px] bg-[#C0A080]"></div>
+        {/* HC Parekh Signature Section */}
+        <div className="mt-6 flex flex-col items-center">
+            <h4 className="text-[#2C3E50] font-serif text-xl font-bold tracking-wide">
+                HC Parekh
+            </h4>
+            <p className="text-[#C0A080] text-sm uppercase tracking-[0.2em] font-medium mt-1">
+                Textile Manufacturer & Entrepreneur
+            </p>
+            <p className="text-gray-400 text-xs mt-1 font-sans">
+                India
+            </p>
         </div>
     </div>
+    
+    <div className="mt-10 flex justify-center items-center gap-3">
+        <div className="w-16 h-[1px] bg-[#C0A080]/40"></div>
+        <div className="w-2 h-2 rounded-full bg-[#C0A080]"></div>
+        <div className="w-16 h-[1px] bg-[#C0A080]/40"></div>
+    </div>
+</div>
 
     {/* Articles List */}
     <div className="space-y-16">
