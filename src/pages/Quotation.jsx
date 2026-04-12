@@ -2,6 +2,7 @@ import { useState } from 'react';
 import useSEO from '../hooks/useSEO';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
+import { API_BASE_URL } from '../utils/api';
 
 const Quotation = () => {
     useSEO(
@@ -25,7 +26,7 @@ const Quotation = () => {
                 ...data
             };
 
-            const response = await fetch("http://localhost:5000/api/quotation", {
+            const response = await fetch(`${API_BASE_URL}/quotation`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

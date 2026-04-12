@@ -3,6 +3,7 @@ import useSEO from '../hooks/useSEO';
 import { FaCalendarAlt, FaClock, FaUserPlus, FaMapMarkerAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
+import { API_BASE_URL } from '../utils/api';
 
 const Appointment = () => {
     useSEO(
@@ -35,7 +36,7 @@ const Appointment = () => {
                 formData.append("proofFile", data.proofFile[0]);
             }
 
-            const response = await fetch("http://localhost:5000/api/appointment", {
+            const response = await fetch(`${API_BASE_URL}/appointment`, {
                 method: "POST",
                 body: formData,
             });

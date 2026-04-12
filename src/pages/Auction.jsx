@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaGavel, FaClock, FaUserPlus, FaShoppingCart } from "react-icons/fa";
 import useSEO from '../hooks/useSEO';
 import { useForm } from 'react-hook-form';
+import { API_BASE_URL } from '../utils/api';
 
 const Auction = () => {
     useSEO(
@@ -91,7 +92,7 @@ const Auction = () => {
                 formData.append("gstCertificate", data.gstCertificate[0]);
             }
 
-            const response = await fetch("http://localhost:5000/api/auction", {
+            const response = await fetch(`${API_BASE_URL}/auction`, {
                 method: "POST",
                 body: formData,
             });

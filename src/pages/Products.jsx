@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import useSEO from '../hooks/useSEO';
-import { productApi } from '../utils/api';
+import { productApi, IMAGE_BASE_URL } from '../utils/api';
 
 const staticProducts = [
     { id: 2, name: "Premium Cotton Linen Bedsheet", cat: "Linen Bedsheets", img: "/linen-img/Parekh Linen_page-0002.jpg" },
@@ -51,7 +51,7 @@ const Products = () => {
                         id: p._id,
                         name: p.title,
                         cat: p.category,
-                        img: `http://localhost:5000/${p.image}`
+                        img: `${IMAGE_BASE_URL}/${p.image}`
                     }));
                     setProducts(dynamicProducts);
                     

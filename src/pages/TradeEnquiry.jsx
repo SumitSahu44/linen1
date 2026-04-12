@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
+import { API_BASE_URL } from '../utils/api';
 
 const TradeEnquiry = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -27,7 +28,7 @@ const TradeEnquiry = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/api/trade-enquiry", {
+            const response = await fetch(`${API_BASE_URL}/trade-enquiry`, {
                 method: "POST",
                 body: formData,
             });
