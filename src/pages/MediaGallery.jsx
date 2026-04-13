@@ -1,83 +1,115 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaPlay } from "react-icons/fa";
-import useSEO from '../hooks/useSEO';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { eventApi, IMAGE_BASE_URL } from '../utils/api';
+
+const staticMedia = [
+    {
+        id: 1,
+        type: 'image',
+        category: 'events',
+        title: 'Manufacturing Facility Tour',
+        thumb: 'https://plus.unsplash.com/premium_photo-1661954415941-82e240c24560?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8TWFudWZhY3R1cmluZyUyMEZhY2lsaXR5JTIwVG8lMjB0ZXh0aWxlfGVufDB8fDB8fHww'
+    },
+    {
+        id: 2,
+        type: 'video',
+        category: 'production',
+        title: 'Bedsheet Production Process',
+        thumb: 'https://media.istockphoto.com/id/171583308/photo/denim-textile-industry-big-weaving-room-hdr.webp?a=1&b=1&s=612x612&w=0&k=20&c=Twkye7uE4XNG9Qg5XkF_hLYsW3aGzM8WVrnRTTsgXkw='
+    },
+    {
+        id: 3,
+        type: 'image',
+        category: 'events',
+        title: 'Trade Expo 2026',
+        thumb: 'https://plus.unsplash.com/premium_photo-1673310539347-05cfbcdc95af?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8VG8lMjB0ZXh0aWxlfGVufDB8fDB8fHww'
+    },
+    {
+        id: 4,
+        type: 'image',
+        category: 'products',
+        title: 'Premium Cotton Collection',
+        thumb: 'https://images.unsplash.com/photo-1749367288395-f874bb54bc8a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fFRvJTIwdGV4dGlsZXxlbnwwfHwwfHx8MA%3D%3D'
+    },
+    {
+        id: 5,
+        type: 'video',
+        category: 'testimonials',
+        title: 'Client Testimonials',
+        thumb: 'https://images.unsplash.com/photo-1722635941018-a9e7de0a5b1b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fFRvJTIwdGV4dGlsZXxlbnwwfHwwfHx8MA%3D%3D'
+    },
+    {
+        id: 6,
+        type: 'image',
+        category: 'events',
+        title: 'Award Ceremony',
+        thumb: 'https://images.unsplash.com/photo-1611331314845-294b3f8cc83b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGV4dGlsZSUyMGltZ3xlbnwwfHwwfHx8MA%3D%3D'
+    },
+    {
+        id: 7,
+        type: 'image',
+        category: 'products',
+        title: 'Luxury Linen Range',
+        thumb: 'https://images.unsplash.com/photo-1771098403201-8d0d32e2a062?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHRleHRpbGUlMjBpbWd8ZW58MHx8MHx8fDA%3D'
+    },
+    {
+        id: 8,
+        type: 'video',
+        category: 'production',
+        title: 'Quality Testing',
+        thumb: 'https://images.unsplash.com/photo-1734699615194-47e2ec528c60?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHRleHRpbGUlMjBpbWd8ZW58MHx8MHx8fDA%3D'
+    }
+];
 
 const MediaGallery = () => {
-    useSEO(
-        'Media Gallery',
-        'View our media gallery showcasing manufacturing facilities, products, events, and company culture at Parekh Linen.',
-        'media gallery, manufacturing, photos, videos, facility tour'
-    );
-
     const [activeCategory, setActiveCategory] = useState('all');
+    const [media, setMedia] = useState([]);
+    const [categories, setCategories] = useState([{ value: 'all', label: 'All' }]);
+    const [loading, setLoading] = useState(true);
+    const siteId = "ParekhLinen04";
 
-    const media = [
-        {
-            id: 1,
-            type: 'image',
-            category: 'events',
-            title: 'Manufacturing Facility Tour',
-            thumb: 'https://plus.unsplash.com/premium_photo-1661954415941-82e240c24560?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8TWFudWZhY3R1cmluZyUyMEZhY2lsaXR5JTIwVG8lMjB0ZXh0aWxlfGVufDB8fDB8fHww'
-        },
-        {
-            id: 2,
-            type: 'video',
-            category: 'production',
-            title: 'Bedsheet Production Process',
-            thumb: 'https://media.istockphoto.com/id/171583308/photo/denim-textile-industry-big-weaving-room-hdr.webp?a=1&b=1&s=612x612&w=0&k=20&c=Twkye7uE4XNG9Qg5XkF_hLYsW3aGzM8WVrnRTTsgXkw='
-        },
-        {
-            id: 3,
-            type: 'image',
-            category: 'events',
-            title: 'Trade Expo 2026',
-            thumb: 'https://plus.unsplash.com/premium_photo-1673310539347-05cfbcdc95af?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8VG8lMjB0ZXh0aWxlfGVufDB8fDB8fHww'
-        },
-        {
-            id: 4,
-            type: 'image',
-            category: 'products',
-            title: 'Premium Cotton Collection',
-            thumb: 'https://images.unsplash.com/photo-1749367288395-f874bb54bc8a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fFRvJTIwdGV4dGlsZXxlbnwwfHwwfHx8MA%3D%3D'
-        },
-        {
-            id: 5,
-            type: 'video',
-            category: 'testimonials',
-            title: 'Client Testimonials',
-            thumb: 'https://images.unsplash.com/photo-1722635941018-a9e7de0a5b1b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fFRvJTIwdGV4dGlsZXxlbnwwfHwwfHx8MA%3D%3D'
-        },
-        {
-            id: 6,
-            type: 'image',
-            category: 'events',
-            title: 'Award Ceremony',
-            thumb: 'https://images.unsplash.com/photo-1611331314845-294b3f8cc83b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGV4dGlsZSUyMGltZ3xlbnwwfHwwfHx8MA%3D%3D'
-        },
-        {
-            id: 7,
-            type: 'image',
-            category: 'products',
-            title: 'Luxury Linen Range',
-            thumb: 'https://images.unsplash.com/photo-1771098403201-8d0d32e2a062?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHRleHRpbGUlMjBpbWd8ZW58MHx8MHx8fDA%3D'
-        },
-        {
-            id: 8,
-            type: 'video',
-            category: 'production',
-            title: 'Quality Testing',
-            thumb: 'https://images.unsplash.com/photo-1734699615194-47e2ec528c60?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHRleHRpbGUlMjBpbWd8ZW58MHx8MHx8fDA%3D'
-        }
-    ];
+    useEffect(() => {
+        const fetchMedia = async () => {
+            try {
+                const response = await eventApi.getAll(siteId);
+                if (response.data.success && response.data.data.length > 0) {
+                    const fetchedMedia = response.data.data.map(m => ({
+                        id: m._id,
+                        type: m.type || 'image',
+                        category: m.category,
+                        title: m.title,
+                        thumb: `${IMAGE_BASE_URL}/${m.image}`
+                    }));
+                    setMedia(fetchedMedia);
 
-    const categories = [
-        { value: 'all', label: 'All' },
-        { value: 'products', label: 'Products' },
-        { value: 'production', label: 'Production' },
-        { value: 'events', label: 'Events' },
-        { value: 'testimonials', label: 'Testimonials' }
-    ];
+                    // Dynamic Categories extraction
+                    const uniqueCats = ['all', ...new Set(fetchedMedia.map(item => item.category))];
+                    setCategories(uniqueCats.map(cat => ({
+                        value: cat,
+                        label: cat.charAt(0).toUpperCase() + cat.slice(1)
+                    })));
+                } else {
+                    setMedia(staticMedia);
+                    setCategories([
+                        { value: 'all', label: 'All' },
+                        { value: 'products', label: 'Products' },
+                        { value: 'production', label: 'Production' },
+                        { value: 'events', label: 'Events' },
+                        { value: 'testimonials', label: 'Testimonials' }
+                    ]);
+                }
+            } catch (error) {
+                console.error("Failed to fetch media:", error);
+                setMedia(staticMedia);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchMedia();
+    }, []);
+
 
     const filteredMedia = activeCategory === 'all'
         ? media

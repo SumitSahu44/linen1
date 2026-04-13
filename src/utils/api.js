@@ -12,15 +12,15 @@ export const productApi = {
 };
 
 export const blogApi = {
-  getAll: (siteId) => api.get(`/blog?siteId=${siteId}`),
+  getAll: (siteId) => api.get(`/blogs?siteId=${siteId}`),
 };
 
 export const careerApi = {
-  getAll: (siteId) => api.get(`/career?siteId=${siteId}`),
+  getAll: (siteId) => api.get(`/careers?siteId=${siteId}`),
 };
 
 export const eventApi = {
-  getAll: (siteId) => api.get(`/event?siteId=${siteId}`),
+  getAll: (siteId) => api.get(`/media-events?siteId=${siteId}`),
 };
 
 export default api;

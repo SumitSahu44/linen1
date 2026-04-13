@@ -1,17 +1,40 @@
-import useSEO from '../hooks/useSEO';
+import { useState, useEffect } from 'react';
+import { blogApi, IMAGE_BASE_URL } from '../utils/api';
+
+const staticPosts = [
+    { date: "March 10, 2026", title: "Future of Organic Cotton in India", category: "Trends" },
+    { date: "Feb 28, 2026", title: "Maintaining 1000 Thread Count: A Guide", category: "Maintenance" },
+    { date: "Jan 15, 2026", title: "Parekh Linen Wins Quality Award", category: "News" }
+];
 
 const Blog = () => {
-    useSEO(
-        'Blog & Insights',
-        'Read the latest insights and articles about textile industry trends, linen care, and quality standards from Parekh Linen.',
-        'blog, textile industry, linen care, thread count, organic cotton'
-    );
-    
-    const posts = [
-        { date: "March 10, 2026", title: "Future of Organic Cotton in India", category: "Trends" },
-        { date: "Feb 28, 2026", title: "Maintaining 1000 Thread Count: A Guide", category: "Maintenance" },
-        { date: "Jan 15, 2026", title: "Parekh Linen Wins Quality Award", category: "News" }
-    ];
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const siteId = "ParekhLinen04";
+
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const response = await blogApi.getAll(siteId);
+                if (response.data.success && response.data.data.length > 0) {
+                    setPosts(response.data.data.map(p => ({
+                        date: new Date(p.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+                        title: p.title,
+                        category: p.category || "General",
+                        description: p.content || "Read our latest insights about the evolving textile industry..."
+                    })));
+                } else {
+                    setPosts(staticPosts);
+                }
+            } catch (error) {
+                console.error("Failed to fetch blogs:", error);
+                setPosts(staticPosts);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchBlogs();
+    }, []);
 
     return (
    <div className="pt-32 pb-20 max-w-5xl mx-auto px-6">
@@ -61,7 +84,7 @@ const Blog = () => {
                 </h3>
                 
                 <p className="mt-4 text-gray-500 leading-relaxed max-w-2xl text-sm md:text-base">
-                    Read our latest insights about the evolving textile industry and our contributions to quality standards...
+                    {post.description}
                 </p>
                 
                 <div className="mt-8 flex items-center gap-4">
