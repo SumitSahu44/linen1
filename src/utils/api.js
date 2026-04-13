@@ -11,4 +11,16 @@ export const productApi = {
   getAll: (siteId) => api.get(`/product?siteId=${siteId}`),
 };
 
+export const blogApi = {
+  getAll: (siteId) => api.get(`/blog?siteId=${siteId}`),
+};
+
+export const careerApi = {
+  getAll: (siteId) => api.get(`/career?siteId=${siteId}`),
+};
+
+export const eventApi = {
+  getAll: (siteId) => api.get(`/event?siteId=${siteId}`),
+};
+
 export default api;

@@ -36,7 +36,7 @@ const Products = () => {
         'Browse our premium collection of bedsheets, fabrics, and linen products from Parekh Linen.',
         'products, bedsheets, fabrics, linen, Egyptian cotton, high quality'
     );
-    
+
     const [activeTab, setActiveTab] = useState('All');
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState(['All']);
@@ -54,7 +54,7 @@ const Products = () => {
                         img: `${IMAGE_BASE_URL}/${p.image}`
                     }));
                     setProducts(dynamicProducts);
-                    
+
                     const dynamicCats = ['All', ...new Set(dynamicProducts.map(p => p.cat))];
                     setCategories(dynamicCats);
                 } else {
@@ -89,9 +89,9 @@ const Products = () => {
     return (
         <div className="bg-white min-h-screen pt-32 pb-20 px-4 md:px-10">
             <div className="max-w-[1600px] mx-auto">
-                
+
                 {/* Minimal Header */}
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-100 pb-8 gap-6">
+                <div className="flex flex-col md:flex-row justify-between items-center mb-16 border-b border-gray-100 pb-8 gap-6">
                     <div>
                         <h1 className="text-3xl font-serif text-[#2C3E50] tracking-tight">
                             Our <span className="italic text-[#C0A080]">Collections</span>
@@ -104,9 +104,8 @@ const Products = () => {
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                className={`text-[10px] uppercase tracking-[0.2em] font-bold transition-all relative ${
-                                    activeTab === tab ? 'text-[#C0A080]' : 'text-gray-400 hover:text-[#2C3E50]'
-                                }`}
+                                className={`text-[10px] uppercase tracking-[0.2em] font-bold transition-all relative ${activeTab === tab ? 'text-[#C0A080]' : 'text-gray-400 hover:text-[#2C3E50]'
+                                    }`}
                             >
                                 {tab}
                                 {activeTab === tab && (
@@ -131,10 +130,10 @@ const Products = () => {
                                 className="group cursor-pointer"
                             >
                                 <div className="relative overflow-hidden aspect-[16/10] bg-gray-50 mb-4 shadow-sm group-hover:shadow-md transition-shadow duration-500">
-                                    <img 
-                                        src={p.img} 
-                                        alt={p.name} 
-                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                                    <img
+                                        src={p.img}
+                                        alt={p.name}
+                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </div>
