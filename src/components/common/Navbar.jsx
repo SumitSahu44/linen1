@@ -35,8 +35,8 @@ const Navbar = () => {
         { name: 'Circular', path: '/circular' },
         { name: 'Blog', path: '/blog' },
         { name: 'Reviews', path: '/reviews' },
-        { name: 'Visit Appointment', path: '/appointment' }, // e-Form
-        { name: 'Textile Associates', path: '/india-map' },
+        { name: 'Visit with Appointment', path: '/appointment' }, // e-Form
+        { name: 'Our Textile Associates', path: '/india-map' },
 
     ];
     // Color tokens based on scroll state
