@@ -59,19 +59,19 @@ const Appointment = () => {
     return (
         <div className="pt-32 pb-20 bg-white">
             <div className="max-w-5xl mx-auto px-6">
-                
+
                 {/* Header Section */}
                 <div className="text-center mb-12">
                     <h2 className="text-4xl font-serif text-[#2C3E50] mb-4">Visit with Appointment</h2>
                     <div className="w-20 h-1 bg-[#C0A080] mx-auto mb-6"></div>
                     <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-                        We welcome our trade partners and bulk buyers to our manufacturing facility. 
-                        Please fill out the e-form below to schedule your visit.
+                        We welcome our trade partners and bulk buyers to our manufacturing facility.
+                        Please fill out the form below to schedule your visit.
                     </p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-10">
-                    
+
                     {/* Left Side: Info Cards */}
                     <div className="md:col-span-1 space-y-6">
                         <div className="bg-[#2C3E50] p-6 text-white rounded-sm shadow-xl">
@@ -83,15 +83,15 @@ const Appointment = () => {
                             </ul>
                         </div>
 
-                      
+
                     </div>
 
-                    {/* Right Side: Appointment e-Form */}
+                    {/* Right Side: Appointment Form */}
                     <div className="md:col-span-2 bg-slate-50 p-8 md:p-12 border border-gray-100 shadow-sm">
                         {isSubmitted ? (
-                            <motion.div 
-                                initial={{ opacity: 0, scale: 0.95 }} 
-                                animate={{ opacity: 1, scale: 1 }} 
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.4 }}
                                 className="flex flex-col items-center justify-center h-full text-center py-12"
                             >
@@ -117,8 +117,8 @@ const Appointment = () => {
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Name of the Visitor *</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             {...register("visitorName", { required: true })}
                                             className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
                                             placeholder="Enter your full name"
@@ -127,8 +127,8 @@ const Appointment = () => {
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Name of the Business *</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             {...register("businessName", { required: true })}
                                             className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
                                             placeholder="Enter Business/Organization"
@@ -140,7 +140,7 @@ const Appointment = () => {
                                 {/* Address & Pin Code */}
                                 <div className="space-y-2">
                                     <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Visitor Address with Pin code *</label>
-                                    <textarea 
+                                    <textarea
                                         rows="2"
                                         {...register("visitorAddress", { required: true })}
                                         className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all resize-none"
@@ -153,8 +153,8 @@ const Appointment = () => {
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Mobile No. *</label>
-                                        <input 
-                                            type="tel" 
+                                        <input
+                                            type="tel"
                                             {...register("mobileNo", { required: true })}
                                             className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
                                             placeholder="+91 00000 00000"
@@ -163,8 +163,8 @@ const Appointment = () => {
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Email Id *</label>
-                                        <input 
-                                            type="email" 
+                                        <input
+                                            type="email"
                                             {...register("email", { required: true })}
                                             className="w-full p-3 border-b border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all"
                                             placeholder="email@example.com"
@@ -177,7 +177,7 @@ const Appointment = () => {
                                 <div className="grid md:grid-cols-2 gap-6 p-4 bg-white border border-gray-100 rounded-sm">
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Identity Document * (Roll-down)</label>
-                                        <select 
+                                        <select
                                             {...register("proofType", { required: true })}
                                             className="w-full p-3 bg-gray-50 border-none text-sm outline-none focus:ring-1 ring-[#C0A080]"
                                         >
@@ -190,8 +190,8 @@ const Appointment = () => {
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Upload Proof (Image/PDF)</label>
-                                        <input 
-                                            type="file" 
+                                        <input
+                                            type="file"
                                             {...register("proofFile")}
                                             className="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:bg-[#C0A080] file:text-white hover:file:bg-[#2C3E50] transition-all"
                                         />
@@ -201,7 +201,7 @@ const Appointment = () => {
                                 {/* Reason for Visit */}
                                 <div className="space-y-2">
                                     <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Describe the reason for Visit *</label>
-                                    <textarea 
+                                    <textarea
                                         rows="4"
                                         {...register("reasonForVisit", { required: true })}
                                         className="w-full p-3 border border-gray-300 bg-transparent focus:border-[#C0A080] outline-none transition-all resize-none"
@@ -211,7 +211,7 @@ const Appointment = () => {
                                 </div>
 
                                 {/* Submit Button */}
-                                <button 
+                                <button
                                     type="submit"
                                     disabled={loading}
                                     className="w-full bg-[#2C3E50] text-white py-4 font-bold uppercase text-xs tracking-[0.2em] hover:bg-[#C0A080] transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-70"

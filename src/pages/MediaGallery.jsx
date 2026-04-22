@@ -80,7 +80,7 @@ const MediaGallery = () => {
                         type: m.type || 'image',
                         category: m.category,
                         title: m.title,
-                        thumb: `${IMAGE_BASE_URL}/${m.image}`
+                        thumb: m.image?.startsWith("http") ? m.image : `${IMAGE_BASE_URL}/${m.image}`
                     }));
                     setMedia(fetchedMedia);
 
