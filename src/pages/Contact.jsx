@@ -67,40 +67,52 @@ const Contact = () => {
                     </div>
 
                     {/* RIGHT: Enquiry & Care Details (Replaced Form) */}
-                    <div className="bg-[#2C3E50] p-12 rounded-2xl shadow-2xl relative overflow-hidden">
-                        {/* Decorative Background Element */}
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#C0A080]/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
-                        
-                        <div className="relative z-10 space-y-12">
-                            <h3 className="text-3xl font-serif text-white mb-8">Direct Channels</h3>
-                            
-                            {/* Trade Enquiry */}
-                            <div className="flex gap-6 items-start border-b border-white/10 pb-10">
-                                <div className="p-3 bg-[#C0A080]/20 rounded-lg">
-                                    <Briefcase className="text-[#C0A080]" size={28} />
-                                </div>
-                                <div>
-                                    <p className="text-[#C0A080] text-xs font-bold uppercase tracking-[0.2em] mb-2">Trade Enquiry</p>
-                                    <a href="mailto:trade-enquiry@parekhlinen.com" className="text-white text-xl font-medium hover:text-[#C0A080] transition-colors font-sans break-all">
-                                        trade-enquiry@parekhlinen.com
-                                    </a>
-                                </div>
-                            </div>
+                 <div className="bg-[#2C3E50] p-8 pl-4 md:p-12 rounded-2xl shadow-2xl relative overflow-hidden">
+  {/* Decorative Background Element */}
+  <div className="absolute top-0 right-0 w-28 h-28 bg-[#C0A080]/10 rounded-full -mr-14 -mt-14 blur-2xl"></div>
+  
+  <div className="relative z-10 space-y-8 md:space-y-12">
+    <h3 className="text-2xl md:text-3xl font-serif text-white mb-6 md:mb-8">
+      Direct Channels
+    </h3>
+    
+    {/* Trade Enquiry */}
+    <div className="flex gap-2 md:gap-6 items-start border-b border-white/10 pb-6 md:pb-10">
+      <div className="p-2 md:p-3 bg-[#C0A080]/20 rounded-lg shrink-0">
+        <Briefcase className="text-[#C0A080]" size={20} />
+      </div>
+      <div className="min-w-0">
+        <p className="text-[#C0A080] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-1 md:mb-2">
+          Trade Enquiry
+        </p>
+        <a
+          href="mailto:trade-enquiry@parekhlinen.com"
+          className="text-white text-[13px] sm:text-sm md:text-base font-medium hover:text-[#C0A080] transition-colors font-sans whitespace-nowrap tracking-wide"
+        >
+          trade-enquiry@parekhlinen.com
+        </a>
+      </div>
+    </div>
 
-                            {/* Customer Care */}
-                            <div className="flex gap-6 items-start">
-                                <div className="p-3 bg-[#C0A080]/20 rounded-lg">
-                                    <Headset className="text-[#C0A080]" size={28} />
-                                </div>
-                                <div>
-                                    <p className="text-[#C0A080] text-xs font-bold uppercase tracking-[0.2em] mb-2">Customer Care</p>
-                                    <a href="mailto:customer-care@parekhlinen.com" className="text-white text-xl font-medium hover:text-[#C0A080] transition-colors font-sans break-all">
-                                        customer-care@parekhlinen.com
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    {/* Customer Care */}
+    <div className="flex gap-2 md:gap-6 items-start">
+      <div className="p-2 md:p-3 bg-[#C0A080]/20 rounded-lg shrink-0">
+        <Headset className="text-[#C0A080]" size={20} />
+      </div>
+      <div className="min-w-0">
+        <p className="text-[#C0A080] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-1 md:mb-2">
+          Customer Care
+        </p>
+        <a
+          href="mailto:customer-care@parekhlinen.com"
+          className="text-white text-[13px] sm:text-sm md:text-base font-medium hover:text-[#C0A080] transition-colors font-sans whitespace-nowrap tracking-wide"
+        >
+          customer-care@parekhlinen.com
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
                 </div>
 
                 {/* Google Map Section */}
