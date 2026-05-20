@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaGavel, FaClock, FaUserPlus, FaShoppingCart } from "react-icons/fa";
+import { Loader2, Calendar } from 'lucide-react';
 import useSEO from '../hooks/useSEO';
 import { useForm } from 'react-hook-form';
-import { API_BASE_URL } from '../utils/api';
+import { API_BASE_URL, eauctionApi, IMAGE_BASE_URL } from '../utils/api';
+
+const siteId = "ParekhLinen04";
 
 const Auction = () => {
     useSEO(
@@ -12,75 +14,61 @@ const Auction = () => {
         'auction, online bidding, premium linens'
     );
 
-    const [auctionItems] = useState([
-        {
-            id: 1,
-            title: 'Premium Egyptian Cotton Bedsheet Set',
-            currentBid: 2500,
-            startingPrice: 1500,
-            endsWith: '2d 3h 45m',
-            bids: 12,
-            image: 'https://images.unsplash.com/photo-1669763437072-802a9b128d68?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8UHJlbWl1bSUyMEVneXB0aWFuJTIwQ290dG9uJTIwQmVkc2hlZXQlMjBTZXR8ZW58MHx8MHx8fDA%3D'
-        },
-        {
-            id: 2,
-            title: 'Luxury 1000 TC White Linen',
-            currentBid: 3200,
-            startingPrice: 2000,
-            endsWith: '1d 5h 20m',
-            bids: 8,
-            image: 'https://plus.unsplash.com/premium_photo-1732017764574-f3a6d3a348e1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8UHJlbWl1bSUyMEVneXB0aWFuJTIwQ290dG9uJTIwU2V0fGVufDB8fDB8fHww'
-        },
-        {
-            id: 3,
-            title: 'Organic Cotton Bulk Lot',
-            currentBid: 5500,
-            startingPrice: 3500,
-            endsWith: '3d 2h 10m',
-            bids: 15,
-            image: 'https://plus.unsplash.com/premium_photo-1701157946903-57c2821d71b7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGluZW58ZW58MHx8MHx8fDA%3D'
-        },
-        {
-            id: 4,
-            title: 'Jacquard Weave Collection',
-            currentBid: 1800,
-            startingPrice: 1000,
-            endsWith: '6h 30m',
-            bids: 5,
-            image: 'https://images.unsplash.com/photo-1591625591034-75d303d2e1a4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bGluZW58ZW58MHx8MHx8fDA%3D'
-        },
-        {
-            id: 5,
-            title: 'Hotel Grade Bedsheet Bundle',
-            currentBid: 4200,
-            startingPrice: 2500,
-            endsWith: '2d 8h 15m',
-            bids: 18,
-            image: 'https://plus.unsplash.com/premium_photo-1674747086512-5f73de8f7350?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bGluZW58ZW58MHx8MHx8fDA%3D'
-        },
-        {
-            id: 6,
-            title: 'Sateen Weave Luxury Linen',
-            currentBid: 3500,
-            startingPrice: 2000,
-            endsWith: '1d 12h 50m',
-            bids: 10,
-            image: 'https://plus.unsplash.com/premium_photo-1674747086515-5fa9f1363978?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bGluZW58ZW58MHx8MHx8fDA%3D'
-        }
-    ]);
-
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [loading, setLoading] = useState(false);
+    const [loadingForm, setLoadingForm] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
 
+    // Backend listings state
+    const [auctions, setAuctions] = useState([]);
+    const [header, setHeader] = useState({
+        title: 'E-AUCTION',
+        description: 'Bid for premium linens and exclusive collections'
+    });
+    const [loading, setLoading] = useState(true);
+
+    const cleanHtml = (html) => {
+        if (!html) return '';
+        return html.replace(/&nbsp;/g, ' ').replace(/\u00a0/g, ' ');
+    };
+
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                setLoading(true);
+                const [headerRes, listRes] = await Promise.allSettled([
+                    eauctionApi.getHeader(siteId),
+                    eauctionApi.getAll(siteId)
+                ]);
+
+                if (headerRes.status === 'fulfilled' && headerRes.value.data?.success && headerRes.value.data.data) {
+                    setHeader({
+                        title: headerRes.value.data.data.title || 'E-AUCTION',
+                        description: headerRes.value.data.data.description || ''
+                    });
+                }
+
+                if (listRes.status === 'fulfilled' && listRes.value.data?.success) {
+                    const all = listRes.value.data.data || [];
+                    const activeOnly = all.filter(a => a.status === 'active');
+                    setAuctions(activeOnly);
+                }
+            } catch (error) {
+                console.error("Error loading auction data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        loadData();
+    }, []);
+
     const onSubmit = async (data) => {
-        setLoading(true);
+        setLoadingForm(true);
         setErrorMsg('');
 
         try {
             const formData = new FormData();
-            formData.append("siteId", "ParekhLinen04");
+            formData.append("siteId", siteId);
             formData.append("participantName", data.participantName);
             formData.append("legalBusinessName", data.legalBusinessName);
             formData.append("businessAddress", data.businessAddress);
@@ -108,30 +96,125 @@ const Auction = () => {
             console.error("Submission Error:", error);
             setErrorMsg('Server error. Please try again later.');
         } finally {
-            setLoading(false);
+            setLoadingForm(false);
         }
     };
 
     return (
-        <div className="pt-32 pb-20 bg-[#FDFBF7]">
+        <div className="pt-32 pb-20 bg-[#fffcf7] min-h-screen">
+            {/* Scoped CSS to prevent split/break word and overflow */}
+            <style>{`
+                .auction-text,
+                .auction-text * {
+                    word-break: normal !important;
+                    overflow-wrap: break-word !important;
+                    white-space: normal !important;
+                    max-width: 100% !important;
+                }
+                .rich-text-content ul {
+                    list-style-type: disc;
+                    margin-left: 1.25rem;
+                    margin-bottom: 0.5rem;
+                }
+                .rich-text-content ol {
+                    list-style-type: decimal;
+                    margin-left: 1.25rem;
+                    margin-bottom: 0.5rem;
+                }
+            `}</style>
+
             <div className="max-w-7xl mx-auto px-6">
 
                 {/* Header */}
-                {/* <div className="text-center mb-16">
-                    <h2 className="text-4xl font-serif text-[#2C3E50] mb-4">
-                        <span className="lowercase">e</span>-Auction
+                <div className="text-center mb-16 auction-text">
+                    {/* <span className="inline-block text-[10px] font-black uppercase tracking-[0.4em] text-[#C0A080] bg-[#C0A080]/10 border border-[#C0A080]/30 px-5 py-2 rounded-full mb-6">
+                        Official Trade Portal
+                    </span> */}
+                    <h2 className="text-4xl md:text-5xl font-serif text-[#2C3E50] tracking-tight mb-4">
+                        {header.title}
                     </h2>
-                    <p className="text-gray-500 text-lg mb-8">
-                        Bid for premium linens and exclusive collections
-                    </p>
-                </div> */}
+                    <div className="w-24 h-1 bg-[#C0A080] mx-auto mb-6"></div>
+                    <div
+                        className="max-w-2xl mx-auto text-slate-800 text-sm md:text-base leading-relaxed font-normal tracking-wide rich-text-content"
+                        dangerouslySetInnerHTML={{ __html: cleanHtml(header.description) }}
+                    />
+                </div>
 
-                <section className="py-20 pt-5 bg-gray-50 px-6">
+                {/* Active Auctions Section */}
+                <div className="mb-20">
+                    <h3 className="text-2xl font-serif text-[#2C3E50] mb-8 border-b pb-4 border-gray-200 uppercase tracking-tight">
+                        Active Auction Openings
+                    </h3>
+
+                    {loading ? (
+                        <div className="flex flex-col items-center justify-center py-10 gap-3">
+                            <Loader2 className="animate-spin text-[#C0A080]" size={36} />
+                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Loading Auctions...</span>
+                        </div>
+                    ) : auctions.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                            {auctions.map((item, idx) => {
+                                const imgSrc = item.image
+                                    ? (item.image.startsWith('http') ? item.image : `${IMAGE_BASE_URL}/${item.image}`)
+                                    : 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=800';
+
+                                return (
+                                    <div
+                                        key={item._id || idx}
+                                        className="bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row shadow-sm relative group"
+                                    >
+                                        <div className="absolute top-0 left-0 w-1.5 h-full bg-[#C0A080] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300"></div>
+
+                                        {/* Image */}
+                                        <div className="w-full md:w-44 h-48 md:h-44 overflow-hidden bg-slate-50 relative shrink-0">
+                                            <img
+                                                src={imgSrc}
+                                                alt={item.title}
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                onError={(e) => {
+                                                    e.target.src = 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=800';
+                                                }}
+                                            />
+                                        </div>
+
+                                        {/* Content */}
+                                        <div className="p-6 flex flex-col justify-between flex-1 gap-4 auction-text">
+                                            <div>
+                                                {item.date && (
+                                                    <div className="flex items-center gap-1.5 text-slate-600 text-[9px] font-black uppercase tracking-widest mb-2">
+                                                        <Calendar size={12} className="text-[#C0A080]" />
+                                                        Published: {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                                    </div>
+                                                )}
+                                                <h4 className="text-lg font-bold text-[#2C3E50] uppercase tracking-tight mb-2 group-hover:text-[#C0A080] transition-colors">
+                                                    {item.title}
+                                                </h4>
+                                                <div
+                                                    className="text-slate-800 text-sm leading-relaxed rich-text-content"
+                                                    dangerouslySetInnerHTML={{ __html: cleanHtml(item.description) }}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    ) : (
+                        <div className="bg-white border border-gray-100 rounded-3xl p-16 text-center max-w-xl mx-auto mb-16 shadow-sm">
+                            <p className="text-xs font-bold text-[#C0A080] bg-[#C0A080]/10 inline-block px-5 py-2.5 rounded-full italic uppercase">
+                                ( At present, No active e-Auction published )
+                            </p>
+                        </div>
+                    )}
+                </div>
+
+                {/* Form Section */}
+                <section className="py-10 bg-transparent">
                     <div className="max-w-4xl mx-auto">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            className="bg-white shadow-2xl border-t-4 border-[#C0A080] rounded-b-xl overflow-hidden"
+                            className="bg-white shadow-2xl border-t-4 border-[#C0A080] rounded-3xl overflow-hidden"
                         >
                             {/* Header Section */}
                             <div className="bg-[#2C3E50] p-8 text-center text-white">
@@ -151,7 +234,7 @@ const Auction = () => {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                         </svg>
                                     </div>
-                                    <h3 className="text-3xl font-serif text-[#2C3E50] mb-4">You're In!</h3>
+                                    <h3 className="text-3xl font-serif text-[#2C3E50] mb-4 uppercase tracking-tight">You're In!</h3>
                                     <p className="text-gray-500 max-w-md mx-auto leading-relaxed">
                                         Your participation request for the e-Auction has been successfully submitted. We will verify your details and connect with you soon.
                                     </p>
@@ -259,12 +342,12 @@ const Auction = () => {
                                     <div className="pt-6">
                                         <motion.button
                                             type="submit"
-                                            disabled={loading}
-                                            whileHover={{ scale: loading ? 1 : 1.02 }}
-                                            whileTap={{ scale: loading ? 1 : 0.98 }}
-                                            className="w-full bg-[#2C3E50] text-white py-5 font-black uppercase text-[20px] hover:bg-[#C0A080] transition-all shadow-xl disabled:opacity-70"
+                                            disabled={loadingForm}
+                                            whileHover={{ scale: loadingForm ? 1 : 1.02 }}
+                                            whileTap={{ scale: loadingForm ? 1 : 0.98 }}
+                                            className="w-full bg-[#2C3E50] text-white py-5 font-black uppercase text-[20px] hover:bg-[#C0A080] transition-all shadow-xl disabled:opacity-70 rounded-2xl"
                                         >
-                                            {loading ? "Submitting..." : "Submit Auction Entry"}
+                                            {loadingForm ? "Submitting..." : "Submit Auction Entry"}
                                         </motion.button>
                                     </div>
                                 </form>

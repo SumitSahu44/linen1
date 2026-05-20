@@ -19,6 +19,7 @@ import Career from './pages/Career';
 import Appointment from './pages/Appointment';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
+import BlogDetail from './pages/BlogDetail';
 import Circular from './pages/Circular';
 import CustomerReviews from './pages/CustomerReviews';
 import MediaGallery from './pages/MediaGallery';
@@ -65,6 +66,7 @@ function App() {
               <Route path="/career" element={<Career />} />
               <Route path="/appointment" element={<Appointment />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogDetail />} />
               <Route path="/circular" element={<Circular />} />
               <Route path="/reviews" element={<CustomerReviews />} />
               <Route path="/india-map" element={<IndiaMap />} />
