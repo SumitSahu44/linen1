@@ -201,7 +201,7 @@ const Auction = () => {
                         </div>
                     ) : (
                         <div className="bg-white border border-gray-100 rounded-3xl p-16 text-center max-w-xl mx-auto mb-16 shadow-sm">
-                            <p className="text-xs font-bold text-[#C0A080] bg-[#C0A080]/10 inline-block px-5 py-2.5 rounded-full italic uppercase">
+                            <p className="text-xs font-bold text-[#C0A080] bg-[#C0A080]/10 inline-block px-5 py-2.5 rounded-full italic">
                                 ( At present, No active e-Auction published )
                             </p>
                         </div>
