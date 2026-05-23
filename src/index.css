@@ -1,1 +1,81 @@
 @import "tailwindcss";
+
+/* 
+  Global styles for rich text content from text editors (Quill, CKEditor, etc.)
+  This restores default HTML styles that Tailwind CSS resets.
+*/
+.rich-text-content * {
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  hyphens: none !important;
+  text-align: left;
+}
+
+.rich-text-content ul {
+  list-style-type: disc !important;
+  padding-left: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.rich-text-content ol {
+  list-style-type: decimal !important;
+  padding-left: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.rich-text-content li {
+  display: list-item !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.rich-text-content h1 { font-size: 2em !important; font-weight: bold !important; margin-bottom: 0.5em !important; margin-top: 1em !important; }
+.rich-text-content h2 { font-size: 1.5em !important; font-weight: bold !important; margin-bottom: 0.5em !important; margin-top: 1em !important; }
+.rich-text-content h3 { font-size: 1.17em !important; font-weight: bold !important; margin-bottom: 0.5em !important; margin-top: 1em !important; }
+.rich-text-content h4 { font-size: 1em !important; font-weight: bold !important; margin-bottom: 0.5em !important; margin-top: 1em !important; }
+.rich-text-content h5 { font-size: 0.83em !important; font-weight: bold !important; margin-bottom: 0.5em !important; margin-top: 1em !important; }
+.rich-text-content h6 { font-size: 0.67em !important; font-weight: bold !important; margin-bottom: 0.5em !important; margin-top: 1em !important; }
+
+.rich-text-content p {
+  margin-bottom: 1rem !important;
+}
+
+.rich-text-content strong, .rich-text-content b {
+  font-weight: bold !important;
+}
+
+.rich-text-content em, .rich-text-content i {
+  font-style: italic !important;
+}
+
+.rich-text-content u {
+  text-decoration: underline !important;
+}
+
+.rich-text-content a {
+  color: #2563eb !important; /* Tailwind blue-600 */
+  text-decoration: underline !important;
+}
+
+.rich-text-content blockquote {
+  border-left: 4px solid #cbd5e1 !important; /* Tailwind slate-300 */
+  padding-left: 1rem !important;
+  color: #475569 !important; /* Tailwind slate-600 */
+  margin: 1rem 0 !important;
+  font-style: italic !important;
+}
+
+.rich-text-content pre {
+  background-color: #f1f5f9 !important; /* Tailwind slate-100 */
+  padding: 1rem !important;
+  border-radius: 0.25rem !important;
+  overflow-x: auto !important;
+  margin-bottom: 1rem !important;
+}
+
+.rich-text-content code {
+  background-color: #f1f5f9 !important; 
+  padding: 0.125rem 0.25rem !important;
+  border-radius: 0.25rem !important;
+  font-family: monospace !important;
+}
