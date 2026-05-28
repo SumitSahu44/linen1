@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Loader2, FileText, Calendar, Download, Eye } from 'lucide-react';
+import { Loader2, FileText, Calendar, Printer, Eye } from 'lucide-react';
 import { circularApi, IMAGE_BASE_URL } from '../utils/api';
 import useSEO from '../hooks/useSEO';
 
@@ -55,6 +55,33 @@ const Circular = () => {
     const getFileUrl = (pdfUrl) => {
         if (!pdfUrl) return '#';
         return pdfUrl.startsWith('http') ? pdfUrl : `${IMAGE_BASE_URL}/${pdfUrl}`;
+    };
+
+    const handlePrint = async (pdfUrl) => {
+        if (!pdfUrl) return;
+        const fullUrl = getFileUrl(pdfUrl);
+        
+        try {
+            const response = await fetch(fullUrl);
+            const blob = await response.blob();
+            const blobUrl = URL.createObjectURL(blob);
+            
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = blobUrl;
+            document.body.appendChild(iframe);
+            
+            iframe.onload = () => {
+                setTimeout(() => {
+                    iframe.contentWindow.focus();
+                    iframe.contentWindow.print();
+                    setTimeout(() => document.body.removeChild(iframe), 1000);
+                }, 100);
+            };
+        } catch (error) {
+            console.error("Print failed via iframe:", error);
+            window.open(fullUrl, '_blank');
+        }
     };
 
     return (
@@ -124,18 +151,15 @@ const Circular = () => {
                                                 className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-[#2C3E50] text-[10px] font-black uppercase tracking-widest rounded-xl transition-colors"
                                             >
                                                 <Eye size={13} />
-                                                View PDF
+                                                View
                                             </a>
-                                            <a
-                                                href={docUrl}
-                                                download
-                                                target="_blank"
-                                                rel="noopener noreferrer"
+                                            <button
+                                                onClick={() => handlePrint(item.pdfUrl)}
                                                 className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[#2C3E50] hover:bg-[#C0A080] text-white text-[10px] font-black uppercase tracking-widest rounded-xl transition-all shadow-sm"
                                             >
-                                                <Download size={13} />
-                                                Download
-                                            </a>
+                                                <Printer size={13} />
+                                                Print
+                                            </button>
                                         </div>
                                     </div>
                                 );
