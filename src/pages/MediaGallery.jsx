@@ -80,7 +80,8 @@ const MediaGallery = () => {
                         type: m.type || 'image',
                         category: m.category,
                         title: m.title,
-                        thumb: m.image?.startsWith("http") ? m.image : `${IMAGE_BASE_URL}/${m.image}`
+                        thumb: m.image?.startsWith("http") ? m.image : `${IMAGE_BASE_URL}/${m.image}`,
+                        date: m.date || m.createdAt
                     }));
                     setMedia(fetchedMedia);
 
@@ -179,9 +180,16 @@ const MediaGallery = () => {
 
                                 {/* Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-                                    <p className="text-white text-sm font-semibold">
-                                        {item.title}
-                                    </p>
+                                    <div>
+                                        {item.date && (
+                                            <p className="text-[#C0A080] text-[10px] font-bold uppercase tracking-widest mb-1">
+                                                {new Date(item.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
+                                            </p>
+                                        )}
+                                        <p className="text-white text-sm font-semibold">
+                                            {item.title}
+                                        </p>
+                                    </div>
                                 </div>
 
                             </div>

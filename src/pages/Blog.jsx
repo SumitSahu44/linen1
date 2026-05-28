@@ -106,11 +106,11 @@ const Blog = () => {
                             <div className="mt-8 flex flex-col items-center">
                                 <div className="w-12 h-[2px] bg-[#C0A080] mb-3 opacity-45" />
                                 
-                                <h4 className="text-[#1A252F] font-serif text-xl font-black tracking-wide uppercase">
+                                <h4 className="text-[#1A252F] font-serif text-xl font-black tracking-wide">
                                     {header.authorName}
                                 </h4>
                                 
-                                <p className="text-slate-600 text-[10px] md:text-xs uppercase tracking-[0.25em] font-bold mt-1">
+                                <p className="text-slate-600 text-[10px] md:text-xs tracking-[0.25em] font-bold mt-1">
                                     {header.authorRole}
                                 </p>
                                 
